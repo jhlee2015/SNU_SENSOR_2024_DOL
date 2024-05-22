@@ -1,3 +1,4 @@
+import up_logger_manager
 
 crcTable = [0x0000, 0xC0C1, 0xC181, 0x0140, 0xC301, 0x03C0, 0x0280, 0xC241, 0xC601, 0x06C0, 0x0780, 0xC741, 0x0500,
                 0xC5C1, 0xC481, 0x0440, 0xCC01, 0x0CC0, 0x0D80, 0xCD41, 0x0F00, 0xCFC1, 0xCE81, 0x0E40, 0x0A00, 0xCAC1,
@@ -34,19 +35,21 @@ class UTIL:
         return crc
 
     @staticmethod
-    def hextodec(data, DATA):
+    def hextodec(data, p):
         hexlist = []
         for i in range(len(data)):
             t = format(data[i], '02X')
             hexlist.append(t)
 
-        print(DATA, ": ", end="")
+        result = p + ": "
+        #print(p, ": ", end="")
 
         for i in range(len(hexlist)):
             if i < len(hexlist) - 1:
-                print(hexlist[i] + "-", end="")
+                result = str + hexlist[i] + "-"
             else:
-                print(hexlist[i])
+                result = str + hexlist[i]
+        return str
 
     @staticmethod
     def hextodeclog(data, word):

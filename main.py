@@ -36,31 +36,16 @@ class DOL:
     @staticmethod
     def kisan_parser(DATA):
         try:
-            util.hextodec(DATA, "input")
-
-            print("length : ", hex(DATA[2]))
-            print("-" * 30)
-
+            ret = util.hextodec(DATA, "input")
+            print(ret)
 
             # NH3
             nh3 = DOL.NH3(DATA[3:5])
-            print("NH3 value : ", nh3)
-
-            # nh3_value = domain.SENSOR_STATUS(cutime, 2, nh3, '1')
-            # database.DATABASE.insert(nh3_value)
-            # ONEM2M.ONEM2M.request_post(2, 0, nh3)
-            # print("CH3 : ", DATA[7:9])
-
-
             serial_logger.info("nh3 val : " + nh3 )
 
-            # print("CH6 : ", DATA[13:15])
-            # print("CH7 : ", DATA[15:17])
-            # print("CH8 : ", DATA[17:19])
         except Exception as E:
-            print("parsing error")
-            print(E)
-            serial_logger.info(E)
+            serial_logger.debug("parsing error")
+            serial_logger.debug(E)
 
     @staticmethod
     def NH3(data):
@@ -77,7 +62,7 @@ class DOL:
                 res = self.ser.readline()
                 if res:
                     if util.crc16(res) == [0, 0]:
-                        util.hextodec(res, "responsedata : ")  # byte형식
+                        util.hextodec(res, "response data : ")  # byte형식
 
                         # print(res[0:3], type(res[0:3]))
                         self.kisan_parser(res)
