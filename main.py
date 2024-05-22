@@ -37,7 +37,7 @@ class DOL:
     def kisan_parser(DATA):
         try:
             ret = util.hextodec(DATA, "input")
-            print(ret)
+            serial_logger.info(ret)
 
             # NH3
             nh3 = DOL.NH3(DATA[3:5])
