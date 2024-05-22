@@ -9,7 +9,7 @@ import up_logger_manager
 
 #PORT = 'COM11'
 #-->raspi4 설정
-PORT = '/dev/ttyAMA1'
+PORT = '/dev/ttyAMA2'
 #PORT = '/dev/ttyUSB3'
 BAUD = 9600
 
@@ -35,10 +35,6 @@ class DOL:
     @staticmethod
     def kisan_parser(DATA):
         try:
-            now = datetime.datetime.now()
-            cutime = now.strftime('%Y-%m-%d %H:%M:%S')
-
-            # if DATA[19:21] ==
             util.hextodec(DATA, "input")
 
             print("length : ", hex(DATA[2]))
