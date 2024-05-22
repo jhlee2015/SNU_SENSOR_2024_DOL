@@ -9,6 +9,7 @@ import up_logger_manager
 
 #PORT = 'COM11'
 #-->raspi4 설정
+
 PORT = '/dev/ttyAMA2'
 #PORT = '/dev/ttyUSB3'
 BAUD = 9600
