@@ -83,7 +83,7 @@ class DOL:
                         util.hextodec(res, "responsedata : ")  # byte형식
 
                         # print(res[0:3], type(res[0:3]))
-                        self.soha_parser(res)
+                        self.kisan_parser(res)
                     else:
                         serial_logger.info(datetime.datetime.now(), "CRC UNMATCHED DATA : ", res)
 
