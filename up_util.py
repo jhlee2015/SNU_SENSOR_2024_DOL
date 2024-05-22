@@ -46,10 +46,10 @@ class UTIL:
 
         for i in range(len(hexlist)):
             if i < len(hexlist) - 1:
-                result = str + hexlist[i] + "-"
+                result = result + hexlist[i] + "-"
             else:
-                result = str + hexlist[i]
-        return str
+                result = result + hexlist[i]
+        return result
 
     @staticmethod
     def hextodeclog(data, word):
