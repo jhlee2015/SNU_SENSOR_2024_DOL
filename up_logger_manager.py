@@ -24,6 +24,7 @@ class LoggerManager:
 
         self.info_log_init()
         self.serial_log_init()
+        self.db_log_init()
 
     def info_log_init(self):
         handler = logging.handlers.TimedRotatingFileHandler(filename="log/info.log", when='midnight')
@@ -50,10 +51,10 @@ class LoggerManager:
         handler.setFormatter(self.formatter)
         handler.suffix = "%Y-%m-%d" # or anything else that strftime will allow
 
-        self.serial_logger = logging.getLogger("db")
-        self.serial_logger.setLevel(logging.INFO)
-        self.serial_logger.addHandler(handler)
-        self.serial_logger.addHandler(self.console_handler)
+        self.db_logger = logging.getLogger("db")
+        self.db_logger.setLevel(logging.INFO)
+        self.db_logger.addHandler(handler)
+        self.db_logger.addHandler(self.console_handler)
 
     def get_logger(self, name=None):
         if name:
