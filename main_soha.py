@@ -14,7 +14,7 @@ class SOHA:
     soha_req = bytearray([0x01, 0x03, 0x00, 0x64, 0x00, 0x03, 0x44, 0x14])
 
     def __init__(self):
-        serial_config = up_config_manager.ConfigManager().get_serial_config()
+        serial_config = up_config_manager.ConfigManager().get_serial_config('S0')
         print(serial_config)
         self.port = serial_config['port']
         self.baud = serial_config['baud']

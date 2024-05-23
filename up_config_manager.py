@@ -39,11 +39,18 @@ class ConfigManager:
         }
         return db_config
 
-    def get_serial_config(self):
-        serial_config = {
-            'port': self.config.get('serial', 'PORT'),
-            'baud': self.config.get('serial', 'BAUD')
-        }
+    def get_serial_config(self, name=None):
+        serial_config = {}
+        if name == 'S0':
+            serial_config = {
+                'port': self.config.get('serial_s0', 'PORT'),
+                'baud': self.config.get('serial_s0', 'BAUD')
+            }
+        elif name == 'AMA2':
+            serial_config = {
+                'port': self.config.get('serial_ama2', 'PORT'),
+                'baud': self.config.get('serial_ama2', 'BAUD')
+            }
         return serial_config
 
     def get_settings(self):
