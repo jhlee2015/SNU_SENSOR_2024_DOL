@@ -19,7 +19,7 @@ class LoggerManager:
         self.formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
         self.console_handler = logging.StreamHandler()
-        self.console_handler.setLevel(logging.DEBUG)
+        self.console_handler.setLevel(logging.INFO)
         self.console_handler.setFormatter(self.formatter)
 
         # self.info_log_init()
@@ -44,7 +44,7 @@ class LoggerManager:
         self.serial_logger = logging.getLogger("serial")
         self.serial_logger.setLevel(logging.INFO)
         self.serial_logger.addHandler(handler)
-        self.serial_logger.addHandler(self.console_handler)
+        #self.serial_logger.addHandler(self.console_handler)
 
     def db_log_init(self):
         handler = logging.handlers.TimedRotatingFileHandler(filename="log/db.log", when='midnight')
