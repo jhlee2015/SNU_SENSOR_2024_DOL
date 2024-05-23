@@ -44,7 +44,7 @@ class LoggerManager:
         self.serial_logger = logging.getLogger("serial")
         self.serial_logger.setLevel(logging.INFO)
         self.serial_logger.addHandler(handler)
-        #self.serial_logger.addHandler(self.console_handler)
+        self.serial_logger.addHandler(self.console_handler)
 
     def db_log_init(self):
         handler = logging.handlers.TimedRotatingFileHandler(filename="log/db.log", when='midnight')
@@ -58,7 +58,7 @@ class LoggerManager:
 
     def get_logger(self, name=None):
         if name:
-            return logging.getLogger(name)
+            return self.getLogger(name)
         return self.info_logger
 
 
