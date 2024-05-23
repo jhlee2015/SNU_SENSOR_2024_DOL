@@ -19,12 +19,12 @@ class LoggerManager:
         self.formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
         self.console_handler = logging.StreamHandler()
-        self.console_handler.setLevel(logging.INFO)
+        self.console_handler.setLevel(logging.DEBUG)
         self.console_handler.setFormatter(self.formatter)
 
-        # self.info_log_init()
+        self.info_log_init()
         self.serial_log_init()
-        # self.db_log_init()
+        self.databases_log_init
 
     def info_log_init(self):
         handler = logging.handlers.TimedRotatingFileHandler(filename="log/info.log", when='midnight')
@@ -46,18 +46,19 @@ class LoggerManager:
         self.serial_logger.addHandler(handler)
         self.serial_logger.addHandler(self.console_handler)
 
-    def db_log_init(self):
+    def databases_log_init(self):
         handler = logging.handlers.TimedRotatingFileHandler(filename="log/db.log", when='midnight')
         handler.setFormatter(self.formatter)
-        handler.suffix = "%Y-%m-%d" # or anything else that strftime will allow
-
+        handler.suffix = "%Y-%m-%d"
+        
         self.db_logger = logging.getLogger("db")
         self.db_logger.setLevel(logging.INFO)
         self.db_logger.addHandler(handler)
         self.db_logger.addHandler(self.console_handler)
+        
 
     def get_logger(self, name=None):
-        if name is 'serial':
+        if name is "serial":
             return self.serial_logger
         return self.info_logger
 
