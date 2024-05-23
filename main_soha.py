@@ -52,9 +52,9 @@ class SOHA:
         true_rh_value = int(rh_value.hex(), 16) / 10
         db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), '1', up_util.HUM, true_rh_value))
 
-        serial_logger.info('real_co2 value : '+true_co2_value+' ppm')
-        serial_logger.info('real_temp_value : '+true_temp_value+'C')
-        serial_logger.info('real_rh_value : '+true_rh_value+'%')
+        serial_logger.info('real_co2 value : '+int(true_co2_value)+' ppm')
+        serial_logger.info('real_temp_value : '+float(true_temp_value)+'C')
+        serial_logger.info('real_rh_value : '+float(true_rh_value)+'%')
 
 
     def main_loof(self):
