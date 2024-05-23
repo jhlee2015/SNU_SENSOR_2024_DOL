@@ -75,7 +75,7 @@ if __name__ == '__main__':
     db_manager = up_databases.DatabaseManager()
     util = UP.UTIL()
 
-    #info_logger = log_manager.get_logger('info')
+    info_logger = log_manager.get_logger('info')
     serial_logger = log_manager.get_logger('serial')
 
     while True:

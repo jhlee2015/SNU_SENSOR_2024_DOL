@@ -13,29 +13,48 @@ log_dir = '{}/log'.format(current_dir)
 if not os.path.exists(log_dir):
     os.makedirs(log_dir)
 
+FORMATTER = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
+def singleton(cls):
+    instances = {}
+
+    def get_instance(*args, **kwargs):
+        if cls not in instances:
+            instances[cls] = cls(*args, **kwargs)
+        return instances[cls]
+
+    return get_instance
+
+
+@singleton
 class LoggerManager:
 
     def __init__(self):
-        self.formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        self.info_logger = self.makeHandler("info")
+        self.serial_logger = self.makeHandler("serial")
+        self.db_logger = self.makeHandler("db")
 
-        self.makeHandler("info")
-        self.makeHandler("serial")
-        self.makeHandler("db")
-
-    def makeHandler(self, name=None):
-        logger = logging.getLogger(name)
-        handler = logging.handlers.TimedRotatingFileHandler(filename="log/"+name+".log", when='midnight')
-        handler.setFormatter(self.formatter)
+    @staticmethod
+    def makeHandler(name=None):
+        handler = logging.handlers.TimedRotatingFileHandler(filename="log/" + name + ".log", when='midnight')
+        handler.setFormatter(FORMATTER)
+        handler.setLevel(logging.INFO)
         handler.suffix = "%Y-%m-%d"  # or anything else that strftime will allow
 
         console_handler = logging.StreamHandler()
-        console_handler.setLevel(logging.DEBUG)
-        console_handler.setFormatter(self.formatter)
+        console_handler.setLevel(logging.INFO)
+        console_handler.setFormatter(FORMATTER)
+
+        logger = logging.getLogger(name)
+        logger.setLevel(logging.INFO)
         logger.addHandler(handler)
         logger.addHandler(console_handler)
 
-    def get_logger(self, name=None):
-        if name == "serial":
-            return self.serial_logger
-        return self.info_logger
+        return logger
+
+    @staticmethod
+    def get_logger(name=None):
+        if name:
+            return logging.getLogger(name)
+        return logging.getLogger("info")
+
