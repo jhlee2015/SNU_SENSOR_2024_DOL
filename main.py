@@ -81,6 +81,7 @@ if __name__ == '__main__':
 
     while True:
         serial_logger.info('SNU Dol Sensor Start' )
+        print('hahah')
         try:
             dol = DOL()
             dol.app_init()
