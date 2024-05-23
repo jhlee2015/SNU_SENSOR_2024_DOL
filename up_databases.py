@@ -67,6 +67,7 @@ class DatabaseManager:
     def insert(self, query, params):
         try:
             self.execute_query(query, params)
+            self.logger.info(f"insert ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing insert: {e}")
             raise e
@@ -74,6 +75,7 @@ class DatabaseManager:
     def update(self, query, params):
         try:
             self.execute_query(query, params)
+            self.logger.info(f"update ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing update: {e}")
             raise e
@@ -81,6 +83,7 @@ class DatabaseManager:
     def delete(self, query, params):
         try:
             self.execute_query(query, params)
+            self.logger.info(f"delete ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing delete: {e}")
             raise e           
