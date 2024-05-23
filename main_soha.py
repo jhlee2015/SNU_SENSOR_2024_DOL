@@ -84,15 +84,15 @@ if __name__ == '__main__':
 
     while True:
         try:
-            dol = DOL()
-            dol.app_init()
-            thread = threading.Thread(target=DOL.readthread, args=(dol.ser,))  # 시리얼 통신 받는 부분
+            soha = SOHA()
+            soha.app_init()
+            thread = threading.Thread(target=SOHA.readthread, args=(soha.ser,))  # 시리얼 통신 받는 부분
             thread.start()
-            dol.main_loof()
+            soha.main_loof()
 
         except Exception as E:
             serial_logger.info('main error' + str(E))
-            if dol.ser is not None:
+            if soha.ser is not None:
                 serial_logger.info('serial close ok')
-                dol.ser.close()
+                soha.ser.close()
             time.sleep(10)
