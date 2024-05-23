@@ -65,8 +65,8 @@ class DOL:
                         util.hextodec(res, "response data : ")  # byte형식
 
                         # print(res[0:3], type(res[0:3]))
-                        #self.kisan_parser(res)
-                        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), '1', '1', str(self.kisan_parser(res))))
+                        self.kisan_parser(res)
+                        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), '1', '1', '12.12'))
                     else:
                         serial_logger.info(datetime.datetime.now(), "CRC UNMATCHED DATA : ", res)
 
