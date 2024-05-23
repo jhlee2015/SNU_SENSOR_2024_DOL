@@ -58,7 +58,6 @@ class DOL:
     def main_loof(self):
         while True:
             if self.ser.readable():
-                # print('start')
                 res = self.ser.readline()
                 if res:
                     if util.crc16(res) == [0, 0]:
@@ -77,7 +76,7 @@ if __name__ == '__main__':
     db_manager = up_databases.DatabaseManager()
     util = UP.UTIL()
 
-    info_logger = log_manager.get_logger('info')
+    #info_logger = log_manager.get_logger('info')
     serial_logger = log_manager.get_logger('serial')
 
     while True:

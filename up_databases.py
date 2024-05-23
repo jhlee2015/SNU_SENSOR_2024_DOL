@@ -94,7 +94,7 @@ if __name__ == '__main__':
     while True:
         try:
             print("start")
-            dbManager.insert(query = insertQuery, params = (parse('2021-07-01 00:00:00'), '1', '1', '1'))
+            dbManager.insert(query = DatabaseManager.insertQuery, params = (parse('2021-07-01 00:00:00'), '1', '1', '1'))
             time.sleep(10)
         except Exception as E:
             print(E)
