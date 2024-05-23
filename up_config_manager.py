@@ -41,7 +41,7 @@ class ConfigManager:
 
     def get_serial_config(self):
         serial_config = {
-            'port': self.config.getboolean('serial', 'PORT'),
+            'port': self.config.get('serial', 'PORT'),
             'baud': self.config.get('serial', 'BAUD')
         }
         return serial_config

@@ -15,6 +15,7 @@ class DOL:
 
     def __init__(self):
         serial_config = up_config_manager.ConfigManager().get_serial_config()
+        print(serial_config)
         self.port = serial_config['port']
         self.baud = serial_config['baud']
         self.ser = None
