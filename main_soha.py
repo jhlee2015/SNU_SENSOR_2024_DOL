@@ -8,14 +8,13 @@ import up_util as UP
 import up_logger_manager
 import up_databases
 
-#PORT = 'COM11'
+PORT = 'COM11'
 #-->raspi4 설정
-
-PORT = '/dev/ttyAMA2'
+#PORT = '/dev/ttyS0'
 #PORT = '/dev/ttyUSB3'
 BAUD = 9600
 
-kisan_req = bytearray([0x01, 0x04, 0x00, 0x82, 0x00, 0x08, 0x51, 0xE4])
+soha_req = bytearray([0x01, 0x03, 0x00, 0x64, 0x00, 0x03, 0x44, 0x14])
 
 class DOL:
 
@@ -24,47 +23,63 @@ class DOL:
         self.db = None
 
     def app_init(self):
+
         self.ser = serial.Serial(PORT, BAUD, timeout=1)
 
     @staticmethod
     def readthread(ser):  # 데이터 받는 함수
 
         while True:
-            serial_logger.info("Kisan Sensor Request")
-            ser.write(kisan_req)
+            serial_logger.info("Soha Sensor Request")
+            ser.write(soha_req)
             time.sleep(5)
 
     @staticmethod
-    def kisan_parser(DATA):
-        try:
-            ret = util.hextodec(DATA, "input")
-            serial_logger.info(ret)
+    def soha_parser(data):
+        co2_value = data[3:5]
+        temp_value = data[5:7]
+        rh_value = data[7:9]
 
-            # NH3
-            nh3 = DOL.NH3(DATA[3:5])
-            serial_logger.info("nh3 val : " + nh3)
-            return nh3
-        except Exception as E:
-            serial_logger.debug("parsing error"+str(E))
+        print("*" * 30)
+        print("Device ID :", data[0])
 
-    @staticmethod
-    def NH3(data):
-        n = int(data.hex(), 16)
-        V = (n * 10) / 65535
-        nh3 = "{0:.2f}".format(V * 10)
-        return nh3
+        print("*" * 30)
+
+        print("Co2 value :", int(co2_value.hex(), 16))
+        true_co2_value = int(co2_value.hex(), 16)
+
+        #id, type, value
+        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), '1', util.CO2, true_co2_value))
+
+        print("temp value :", int(temp_value.hex(), 16))
+        true_temp_value = int(temp_value.hex(), 16) / 10
+        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), '1', util.TEMP, true_temp_value))
+
+        print('RH value : ', int(rh_value.hex(), 16))
+        true_rh_value = int(rh_value.hex(), 16) / 10
+        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), '1', util.HUM, true_rh_value))
+
+        print("-" * 40)
+        print('dev_id : ', data[0])
+        print("real_co2 value :", int(co2_value.hex(), 16), 'ppm')
+        print('real_temp_value : ', true_temp_value, 'ºC')
+        print('real_rh_value : ', true_rh_value, "%")
+        print("-" * 40)
+
+
 
     def main_loof(self):
         while True:
             if self.ser.readable():
+                # print('start')
                 res = self.ser.readline()
                 if res:
                     if util.crc16(res) == [0, 0]:
-                        util.hextodec(res, "response data : ")  # byte형식
-
+                        ret = util.hextodec(res, "inpu : ")  # byte형식
+                        serial_logger.info(ret)
                         # print(res[0:3], type(res[0:3]))
-                        nh3 = self.kisan_parser(res)
-                        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), '1', '1', nh3))
+                        self.soha_parser(res)
+
                     else:
                         serial_logger.info(datetime.datetime.now(), "CRC UNMATCHED DATA : ", res)
 
@@ -79,8 +94,6 @@ if __name__ == '__main__':
     serial_logger = log_manager.get_logger('serial')
 
     while True:
-        serial_logger.info('SNU Dol Sensor Start' )
-        print('hahah')
         try:
             dol = DOL()
             dol.app_init()

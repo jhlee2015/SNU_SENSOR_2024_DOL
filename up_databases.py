@@ -5,27 +5,24 @@ import time
 from dateutil.parser import parse
 import pymysql
 import up_logger_manager
-
-DB_HOST = '221.158.214.211'
-DB_PORT = 14444
-DB_USER = 'aquaGuest'
-DB_PASSWORD = 'Dkzndk34&*'
-DB_DATABASE = 'snu'
-DB_CHARSET = 'utf8'
+import up_config_manager
 
 
-#mysql에 접속하고 disconnect되었을 때 재접하는 클레스
+# mysql에 접속하고 disconnect되었을 때 재접하는 클레스
 class DatabaseManager:
-
     insertQuery = 'insert into tb_sensing_value(create_dt, sensor_id, sensor_type, sensing_value) values(%s, %s, %s, %s)'
 
+
     def __init__(self):
-        self.host = DB_HOST
-        self.port = DB_PORT
-        self.user = DB_USER
-        self.password = DB_PASSWORD
-        self.db = DB_DATABASE
-        self.charset = DB_CHARSET
+        db_config = up_config_manager.ConfigManager().get_database_config()
+        print(db_config)
+
+        self.host = db_config['host']
+        self.port = int(db_config['port'])
+        self.user = db_config['user']
+        self.password = db_config['password']
+        self.db = db_config['database']
+        self.charset = db_config['charset']
         self.conn = None
         self.connect()
         self.logger = up_logger_manager.LoggerManager().get_logger("db")
@@ -86,7 +83,8 @@ class DatabaseManager:
             self.logger.info(f"delete ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing delete: {e}")
-            raise e           
+            raise e
+
 
 if __name__ == '__main__':
     dbManager = DatabaseManager()
@@ -94,7 +92,7 @@ if __name__ == '__main__':
     while True:
         try:
             print("start")
-            dbManager.insert(query = DatabaseManager.insertQuery, params = (parse('2021-07-01 00:00:00'), '1', '1', '1'))
+            dbManager.insert(query=DatabaseManager.insertQuery, params=(parse('2021-07-01 00:00:00'), '1', '1', '1'))
             time.sleep(10)
         except Exception as E:
             print(E)

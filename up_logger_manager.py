@@ -1,19 +1,10 @@
 import logging
 import logging.handlers
 import os
-
-# 현재 파일 경로 및 파일명 찾기
-current_dir = os.path.dirname(os.path.realpath(__file__))
-current_file = os.path.basename(__file__)
-current_file_name = current_file[:-3]  # xxxx.py
-LOG_FILENAME = 'log-{}'.format(current_file_name)
-
-# 로그 저장할 폴더 생성
-log_dir = '{}/log'.format(current_dir)
-if not os.path.exists(log_dir):
-    os.makedirs(log_dir)
+import up_util
 
 FORMATTER = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
 
 def singleton(cls):
     instances = {}
@@ -30,6 +21,12 @@ def singleton(cls):
 class LoggerManager:
 
     def __init__(self):
+        util = up_util.UTIL()
+        # 로그 저장할 폴더 생성
+        log_dir = '{}/log'.format(util.get_current_dir())
+        if not os.path.exists(log_dir):
+            os.makedirs(log_dir)
+
         self.info_logger = self.makeHandler("info")
         self.serial_logger = self.makeHandler("serial")
         self.db_logger = self.makeHandler("db")
@@ -57,4 +54,3 @@ class LoggerManager:
         if name:
             return logging.getLogger(name)
         return logging.getLogger("info")
-

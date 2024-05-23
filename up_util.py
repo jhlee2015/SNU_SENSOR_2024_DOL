@@ -1,4 +1,11 @@
 import up_logger_manager
+import os
+
+# sensor type
+TEMP = 1
+HUM = 2
+CO2 = 3
+NH3 = 4
 
 crcTable = [0x0000, 0xC0C1, 0xC181, 0x0140, 0xC301, 0x03C0, 0x0280, 0xC241, 0xC601, 0x06C0, 0x0780, 0xC741, 0x0500,
                 0xC5C1, 0xC481, 0x0440, 0xCC01, 0x0CC0, 0x0D80, 0xCD41, 0x0F00, 0xCFC1, 0xCE81, 0x0E40, 0x0A00, 0xCAC1,
@@ -22,6 +29,25 @@ crcTable = [0x0000, 0xC0C1, 0xC181, 0x0140, 0xC301, 0x03C0, 0x0280, 0xC241, 0xC6
                 0x8641, 0x8201, 0x42C0, 0x4380, 0x8341, 0x4100, 0x81C1, 0x8081, 0x4040]
 
 class UTIL:
+
+    # 현재 파일 경로 및 파일명 찾기
+    @staticmethod
+    def get_current_dir():
+        return os.path.dirname(os.path.realpath(__file__))
+
+    @staticmethod
+    def get_current_file():
+        return os.path.basename(__file__)
+
+    @staticmethod
+    def get_current_file_name():
+        return UTIL.get_current_file()[:-3]  # xxxx.py
+
+    @staticmethod
+    def read_from_txt(file_path):
+        with open(file_path, 'r') as file:
+            data = file.read()
+        return data
 
     @staticmethod
     def crc16(data, byInt=False):
