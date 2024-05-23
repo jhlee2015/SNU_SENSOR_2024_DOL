@@ -43,7 +43,7 @@ class DOL:
             # NH3
             nh3 = DOL.NH3(DATA[3:5])
             serial_logger.info("nh3 val : " + nh3 )
-
+            return nh3
         except Exception as E:
             serial_logger.debug("parsing error")
             serial_logger.debug(E)
@@ -52,8 +52,8 @@ class DOL:
     def NH3(data):
         n = int(data.hex(), 16)
         V = (n * 10) / 65535
-        hum = "{0:.2f}".format(V * 10)
-        return hum
+        nh3 = "{0:.2f}".format(V * 10)
+        return nh3
 
     def main_loof(self):
         while True:
