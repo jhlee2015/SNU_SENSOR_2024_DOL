@@ -6,6 +6,7 @@ import serial
 from datetime import datetime
 import up_util as UP
 import up_logger_manager
+import up_databases
 
 #PORT = 'COM11'
 #-->raspi4 설정
@@ -52,7 +53,6 @@ class DOL:
         n = int(data.hex(), 16)
         V = (n * 10) / 65535
         hum = "{0:.2f}".format(V * 10)
-
         return hum
 
     def main_loof(self):
@@ -65,7 +65,8 @@ class DOL:
                         util.hextodec(res, "response data : ")  # byte형식
 
                         # print(res[0:3], type(res[0:3]))
-                        self.kisan_parser(res)
+                        #self.kisan_parser(res)
+                        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), '1', '1', str(self.kisan_parser(res))))
                     else:
                         serial_logger.info(datetime.datetime.now(), "CRC UNMATCHED DATA : ", res)
 
@@ -73,6 +74,7 @@ class DOL:
 if __name__ == '__main__':
 
     log_manager = up_logger_manager.LoggerManager()
+    db_manager = up_databases.DatabaseManager()
     util = UP.UTIL()
 
     info_logger = log_manager.get_logger('info')
