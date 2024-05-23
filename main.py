@@ -80,6 +80,7 @@ if __name__ == '__main__':
     serial_logger = log_manager.get_logger('serial')
 
     while True:
+        serial_logger.info('SNU Dol Sensor Start' )
         try:
             dol = DOL()
             dol.app_init()
