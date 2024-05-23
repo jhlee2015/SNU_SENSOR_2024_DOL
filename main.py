@@ -42,11 +42,10 @@ class DOL:
 
             # NH3
             nh3 = DOL.NH3(DATA[3:5])
-            serial_logger.info("nh3 val : " + nh3 )
+            serial_logger.info("nh3 val : " + nh3)
             return nh3
         except Exception as E:
-            serial_logger.debug("parsing error")
-            serial_logger.debug(E)
+            serial_logger.debug("parsing error"+str(E))
 
     @staticmethod
     def NH3(data):

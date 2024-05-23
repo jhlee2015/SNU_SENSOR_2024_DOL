@@ -22,9 +22,9 @@ class LoggerManager:
         self.console_handler.setLevel(logging.DEBUG)
         self.console_handler.setFormatter(self.formatter)
 
-        self.info_log_init()
-        self.serial_log_init()
-        self.db_log_init()
+        # self.info_log_init()
+        # self.serial_log_init()
+        # self.db_log_init()
 
     def info_log_init(self):
         handler = logging.handlers.TimedRotatingFileHandler(filename="log/info.log", when='midnight')
