@@ -17,47 +17,23 @@ if not os.path.exists(log_dir):
 class LoggerManager:
 
     def __init__(self):
-
-        self.info_logger = logging.getLogger("info")
-        self.serial_logger = logging.getLogger("serial")
-        self.db_logger = logging.getLogger("db")
-
         self.formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-        self.console_handler = logging.StreamHandler()
-        self.console_handler.setLevel(logging.DEBUG)
-        self.console_handler.setFormatter(self.formatter)
+        self.makeHandler("info")
+        self.makeHandler("serial")
+        self.makeHandler("db")
 
-        self.info_log_init()
-        self.serial_log_init()
-        self.databases_log_init()
-
-    def info_log_init(self):
-        handler = logging.handlers.TimedRotatingFileHandler(filename="log/info.log", when='midnight')
+    def makeHandler(self, name=None):
+        logger = logging.getLogger(name)
+        handler = logging.handlers.TimedRotatingFileHandler(filename="log/"+name+".log", when='midnight')
         handler.setFormatter(self.formatter)
         handler.suffix = "%Y-%m-%d"  # or anything else that strftime will allow
 
-        self.info_logger.setLevel(logging.INFO)
-        self.info_logger.addHandler(handler)
-        self.info_logger.addHandler(self.console_handler)
-
-    def serial_log_init(self):
-        handler = logging.handlers.TimedRotatingFileHandler(filename="log/serial.log", when='midnight')
-        handler.setFormatter(self.formatter)
-        handler.suffix = "%Y-%m-%d"  # or anything else that strftime will allow
-
-        self.serial_logger.setLevel(logging.INFO)
-        self.serial_logger.addHandler(handler)
-        self.serial_logger.addHandler(self.console_handler)
-
-    def databases_log_init(self):
-        handler = logging.handlers.TimedRotatingFileHandler(filename="log/db.log", when='midnight')
-        handler.setFormatter(self.formatter)
-        handler.suffix = "%Y-%m-%d"
-
-        self.db_logger.setLevel(logging.INFO)
-        self.db_logger.addHandler(handler)
-        self.db_logger.addHandler(self.console_handler)
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.DEBUG)
+        console_handler.setFormatter(self.formatter)
+        logger.addHandler(handler)
+        logger.addHandler(console_handler)
 
     def get_logger(self, name=None):
         if name == "serial":
