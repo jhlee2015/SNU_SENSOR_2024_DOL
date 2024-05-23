@@ -57,8 +57,8 @@ class LoggerManager:
         self.db_logger.addHandler(self.console_handler)
 
     def get_logger(self, name=None):
-        if name:
-            return self.getLogger(name)
+        if name is 'serial':
+            return self.serial_logger
         return self.info_logger
 
 
