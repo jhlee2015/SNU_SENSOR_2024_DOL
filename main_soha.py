@@ -30,7 +30,7 @@ class SOHA:
         while True:
             serial_logger.info("Soha Sensor Request")
             ser.write(SOHA.soha_req)
-            time.sleep(5)
+            time.sleep(60)
 
     @staticmethod
     def soha_parser(data):

@@ -30,7 +30,7 @@ class DOL:
         while True:
             serial_logger.info("Kisan Sensor Request")
             ser.write(DOL.kisan_req)
-            time.sleep(5)
+            time.sleep(60)
 
     @staticmethod
     def kisan_parser(DATA):
