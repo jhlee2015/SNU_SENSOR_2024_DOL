@@ -81,7 +81,7 @@ class PMC:
 
 
                         # print(res[0:3], type(res[0:3]))
-                        temp, vent1, vent2, vent3, error = self.kisan_parser(res)
+                        temp, vent1, vent2, vent3, error = self.pmc_parser(res)
                         db_manager.insert(query=db_manager.insertQuery,
                                           params=(datetime.now(), self.sensor_id, up_util.TEMP, temp))
                         db_manager.insert(query=db_manager.insertQuery,
