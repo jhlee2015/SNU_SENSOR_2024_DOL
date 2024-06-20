@@ -34,7 +34,7 @@ class PMC:
         while True:
             serial_logger.info("Pmc Control Request")
             ser.write(PMC.pmc_req)
-            time.sleep(6)
+            time.sleep(60)
 
     @staticmethod
     def pmc_parser(DATA):
