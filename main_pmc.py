@@ -58,17 +58,20 @@ class PMC:
     @staticmethod
     def TEMP(data):
         n = int(data.hex(), 16)
-        temp = "{0:.2f}".format(n / 10)
+        n2 = float(n / 10)
+        temp = "{0:.2f}".format(n2)
         return temp
 
     @staticmethod
     def VENT(data):
-        vent = int(data.hex(), 16)
+        n = int(data.hex(), 16)
+        vent = "{0:.2f}".format(n)
         return vent
 
     @staticmethod
     def ERROR(data):
-        error = int(data.hex(), 16)
+        n = int(data.hex(), 16)
+        error = "{0:.2f}".format(n)
         return error
 
     def main_loof(self):
