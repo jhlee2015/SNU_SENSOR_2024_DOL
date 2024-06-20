@@ -46,6 +46,11 @@ class ConfigManager:
                 'port': self.config.get('serial_s0', 'PORT'),
                 'baud': self.config.get('serial_s0', 'BAUD')
             }
+        elif name == 'AMA1':
+            serial_config = {
+                'port': self.config.get('serial_ama1', 'PORT'),
+                'baud': self.config.get('serial_ama1', 'BAUD')
+            }
         elif name == 'AMA2':
             serial_config = {
                 'port': self.config.get('serial_ama2', 'PORT'),
