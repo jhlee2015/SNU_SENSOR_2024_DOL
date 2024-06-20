@@ -95,7 +95,7 @@ class PMC:
                                           params=(datetime.now(), self.sensor_id, up_util.VENT3, vent3))
 
                     else:
-                        serial_logger.info(datetime.datetime.now(), "CRC UNMATCHED DATA : ", res)
+                        serial_logger.info(datetime.now(), "CRC UNMATCHED DATA : ", res)
 
 
 if __name__ == '__main__':

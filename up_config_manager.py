@@ -25,7 +25,7 @@ class ConfigManager:
         self.config = configparser.ConfigParser()
 
         print(current_dir + '/config.ini')
-        self.config.read(current_dir + '/config.ini')
+        self.config.read(current_dir + '/config.ini',encoding='utf-8')
 
 
     def get_database_config(self):

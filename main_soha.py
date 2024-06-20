@@ -74,7 +74,7 @@ class SOHA:
                         self.soha_parser(res, self.sensor_id)
 
                     else:
-                        serial_logger.info(datetime.datetime.now(), "CRC UNMATCHED DATA : ", res)
+                        serial_logger.info(datetime.now(), "CRC UNMATCHED DATA : ", res)
 
 
 if __name__ == '__main__':
