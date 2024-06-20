@@ -12,7 +12,6 @@ import up_config_manager
 class DatabaseManager:
     insertQuery = 'insert into tb_sensing_value(create_dt, sensor_id, sensor_type, sensing_value) values(%s, %s, %s, %s)'
 
-
     def __init__(self):
         db_config = up_config_manager.ConfigManager().get_database_config()
         print(db_config)

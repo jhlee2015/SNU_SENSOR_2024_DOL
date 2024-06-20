@@ -51,6 +51,11 @@ class ConfigManager:
                 'port': self.config.get('serial_ama2', 'PORT'),
                 'baud': self.config.get('serial_ama2', 'BAUD')
             }
+        elif name == "WINDOW":
+            serial_config = {
+                'port': self.config.get('serial_window', 'PORT'),
+                'baud': self.config.get('serial_window', 'BAUD')
+            }
         return serial_config
 
     def get_settings(self):
@@ -59,3 +64,9 @@ class ConfigManager:
             'log_file': self.config.get('settings', 'log_file')
         }
         return settings
+
+    def get_sensor_id(self):
+        sensor_id = {
+            'id': self.config.get('sensor_id', 'ID')
+        }
+        return sensor_id
