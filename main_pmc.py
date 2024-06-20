@@ -47,11 +47,11 @@ class PMC:
             vent1 = PMC.VENT(DATA[5:7]) #VENT1(%)
             vent2 = PMC.VENT(DATA[7:9]) #VENT2(%)
             vent3 = PMC.VENT(DATA[9:11]) #VENT3(%)
-            error = PMC.ERROR(DATA[11:13])  # error
+            pmc_error = PMC.ERROR(DATA[11:13])  # error
             serial_logger.info("temp val : " + temp)
             serial_logger.info("vent1 val : " + vent1+",vent1 val : " + vent2+",vent1 val : " + vent3)
-            serial_logger.info("error val : " + error)
-            return temp, vent1, vent2, vent3, error
+            serial_logger.info("error val : " + pmc_error)
+            return temp, vent1, vent2, vent3, pmc_error
         except Exception as E:
             serial_logger.debug("parsing error" + str(E))
 
@@ -71,8 +71,8 @@ class PMC:
     @staticmethod
     def ERROR(data):
         n = int(data.hex(), 16)
-        error = "{0:.2f}".format(n)
-        return error
+        pmc_error = "{0:.2f}".format(n)
+        return pmc_error
 
     def main_loof(self):
         while True:
