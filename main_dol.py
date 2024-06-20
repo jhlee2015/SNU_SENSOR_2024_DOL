@@ -16,9 +16,12 @@ class DOL:
 
     def __init__(self):
         serial_config = up_config_manager.ConfigManager().get_serial_config('AMA2')
+        sensor_id = up_config_manager.ConfigManager().get_sensor_id()
         print(serial_config)
+        print(sensor_id)
         self.port = serial_config['port']
         self.baud = serial_config['baud']
+        self.sensor_id = sensor_id['id']
         self.ser = None
         self.db = None
 
@@ -63,7 +66,7 @@ class DOL:
 
                         # print(res[0:3], type(res[0:3]))
                         nh3 = self.kisan_parser(res)
-                        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), '1', up_util.NH3, nh3))
+                        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), self.sensor_id, up_util.NH3, nh3))
                     else:
                         serial_logger.info(datetime.datetime.now(), "CRC UNMATCHED DATA : ", res)
 

@@ -16,9 +16,12 @@ class SOHA:
 
     def __init__(self):
         serial_config = up_config_manager.ConfigManager().get_serial_config('S0')
+        sensor_id = up_config_manager.ConfigManager().get_sensor_id()
         print(serial_config)
+        print(sensor_id)
         self.port = serial_config['port']
         self.baud = serial_config['baud']
+        self.sensor_id = sensor_id['id']
         self.ser = None
         self.db = None
 
@@ -34,7 +37,7 @@ class SOHA:
             time.sleep(60)
 
     @staticmethod
-    def soha_parser(data):
+    def soha_parser(data, sensor_id):
         co2_value = data[3:5]
         temp_value = data[5:7]
         rh_value = data[7:9]
@@ -43,15 +46,15 @@ class SOHA:
         true_co2_value = int(co2_value.hex(), 16)
 
         # id, type, value
-        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), '1', up_util.CO2, true_co2_value))
+        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), sensor_id, up_util.CO2, true_co2_value))
 
         #print("temp value :", int(temp_value.hex(), 16))
         true_temp_value = int(temp_value.hex(), 16) / 10
-        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), '1', up_util.TEMP, true_temp_value))
+        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), sensor_id, up_util.TEMP, true_temp_value))
 
         #print('RH value : ', int(rh_value.hex(), 16))
         true_rh_value = int(rh_value.hex(), 16) / 10
-        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), '1', up_util.HUM, true_rh_value))
+        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), sensor_id, up_util.HUM, true_rh_value))
 
         serial_logger.info('real_co2 value : '+str(true_co2_value)+' ppm')
         serial_logger.info('real_temp_value : '+str(true_temp_value)+'C')
@@ -68,7 +71,7 @@ class SOHA:
                         ret = util.hextodec(res, "input : ")  # byte형식
                         serial_logger.info(ret)
                         # print(res[0:3], type(res[0:3]))
-                        self.soha_parser(res)
+                        self.soha_parser(res, self.sensor_id)
 
                     else:
                         serial_logger.info(datetime.datetime.now(), "CRC UNMATCHED DATA : ", res)
