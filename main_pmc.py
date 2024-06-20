@@ -11,6 +11,7 @@ import up_config_manager
 
 
 class PMC:
+
     pmc_req = bytearray([0x01, 0x04, 0x00, 0x00, 0x00, 0x0e, 0x71, 0xCE])
 
     def __init__(self):
@@ -36,12 +37,12 @@ class PMC:
             time.sleep(6)
 
     @staticmethod
-    def kisan_parser(DATA):
+    def pmc_parser(DATA):
         try:
             ret = util.hextodec(DATA, "input")
             serial_logger.info(ret)
 
-            # NH3
+            #pmc
             temp = PMC.TEMP(DATA[3:5]) #온도
             vent1 = PMC.VENT(DATA[5:7]) #VENT1(%)
             vent2 = PMC.VENT(DATA[7:9]) #VENT2(%)

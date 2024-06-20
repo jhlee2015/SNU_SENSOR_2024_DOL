@@ -11,6 +11,7 @@ import up_config_manager
 
 
 class DOL:
+
     kisan_req = bytearray([0x01, 0x04, 0x00, 0x82, 0x00, 0x08, 0x51, 0xE4])
 
     def __init__(self):
