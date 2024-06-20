@@ -14,7 +14,7 @@ class PMC:
     pmc_req = bytearray([0x01, 0x04, 0x00, 0x00, 0x00, 0x0e, 0x71, 0xCE])
 
     def __init__(self):
-        serial_config = up_config_manager.ConfigManager().get_serial_config('AMA1')
+        serial_config = up_config_manager.ConfigManager().get_serial_config('AMA2')
         sensor_id = up_config_manager.ConfigManager().get_sensor_id()
         print(serial_config)
         print(sensor_id)
