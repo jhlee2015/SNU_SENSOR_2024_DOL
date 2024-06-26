@@ -13,6 +13,7 @@ class DatabaseManager:
     insertQuery = 'insert into tb_sensing_value(create_dt, sensor_id, sensor_type, sensing_value) values(%s, %s, %s, %s)'
 
     def __init__(self):
+        self.logger = up_logger_manager.LoggerManager().get_logger("db")
         db_config = up_config_manager.ConfigManager().get_database_config()
         print(db_config)
 
@@ -24,7 +25,6 @@ class DatabaseManager:
         self.charset = db_config['charset']
         self.conn = None
         self.connect()
-        self.logger = up_logger_manager.LoggerManager().get_logger("db")
 
     def connect(self):
         try:
@@ -34,13 +34,16 @@ class DatabaseManager:
                                         password=self.password,
                                         db=self.db,
                                         charset=self.charset)
+            self.logger.info(f"Connect !!")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error connecting to MySQL Platform: {e}")
+            self.connect()
             raise e
 
     def disconnect(self):
         if self.conn:
             self.conn.close()
+            self.logger.info(f"Disconnect !!")
 
     def execute_query(self, query, params=None):
         try:
@@ -49,6 +52,7 @@ class DatabaseManager:
                 self.conn.commit()
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing query: {e}")
+            self.connect()
             raise e
 
     def select(self, query, params=None):
@@ -58,6 +62,7 @@ class DatabaseManager:
                 return cursor.fetchall()
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing select: {e}")
+            self.connect()
             raise e
 
     def insert(self, query, params):
@@ -66,6 +71,7 @@ class DatabaseManager:
             self.logger.info(f"insert ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing insert: {e}")
+            self.connect()
             raise e
 
     def update(self, query, params):
@@ -74,6 +80,7 @@ class DatabaseManager:
             self.logger.info(f"update ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing update: {e}")
+            self.connect()
             raise e
 
     def delete(self, query, params):
@@ -82,15 +89,20 @@ class DatabaseManager:
             self.logger.info(f"delete ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing delete: {e}")
+            self.connect()
             raise e
 
 
 if __name__ == '__main__':
-    dbManager = DatabaseManager()
+    log_manager = up_logger_manager.LoggerManager()
 
+    info_logger = log_manager.get_logger('info')
+    serial_logger = log_manager.get_logger('serial')
+
+    dbManager = DatabaseManager()
     while True:
         try:
-            print("start")
+            serial_logger.info('Databases Test Start')
             dbManager.insert(query=DatabaseManager.insertQuery, params=(parse('2021-07-01 00:00:00'), '1', '1', '1'))
             time.sleep(10)
         except Exception as E:
