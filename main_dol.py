@@ -32,7 +32,7 @@ class DOL:
     def readthread(ser):  # 데이터 받는 함수
 
         while True:
-            serial_logger.info("Kisan Sensor Request")
+            serial_logger.info("Kisan Sensor Request!")
             ser.write(DOL.kisan_req)
             time.sleep(60)
 
