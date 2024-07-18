@@ -12,6 +12,8 @@ import up_config_manager
 class DatabaseManager:
     insertQuery = 'insert into tb_sensing_value(create_dt, sensor_id, sensor_type, sensing_value) values(%s, %s, %s, %s)'
 
+    insertKnuCowQuery = 'insert into tb_sensing_value(create_dt, sensor_id, sensor_type, wind_speed_value, wind_direction_value) values(%s, %s, %s, %s, %s)'
+
     def __init__(self):
         self.logger = up_logger_manager.LoggerManager().get_logger("db")
         db_config = up_config_manager.ConfigManager().get_database_config()
