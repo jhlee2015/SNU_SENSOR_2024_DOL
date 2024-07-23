@@ -5,6 +5,8 @@ import up_util
 
 FORMATTER = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
+CSV_FORMATTER = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
 
 def singleton(cls):
     instances = {}
@@ -30,7 +32,7 @@ class LoggerManager:
         self.info_logger = self.makeHandler("info")
         self.serial_logger = self.makeHandler("serial")
         self.db_logger = self.makeHandler("db")
-        self.csv_logger = self.makeHandler("csv")
+        self.csv_logger = self.makeCsvHandler("csv")
 
     @staticmethod
     def makeHandler(name=None):
@@ -42,6 +44,23 @@ class LoggerManager:
         console_handler = logging.StreamHandler()
         console_handler.setLevel(logging.INFO)
         console_handler.setFormatter(FORMATTER)
+
+        logger = logging.getLogger(name)
+        logger.setLevel(logging.INFO)
+        logger.addHandler(handler)
+        logger.addHandler(console_handler)
+
+        return logger
+    
+    @staticmethod
+    def makeCsvHandler(name=None):
+        handler = logging.handlers.TimedRotatingFileHandler(filename="log/" + name + ".log", when='midnight')
+        handler.setFormatter(CSV_FORMATTER)
+        handler.setLevel(logging.INFO)
+        
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.INFO)
+        console_handler.setFormatter(CSV_FORMATTER)
 
         logger = logging.getLogger(name)
         logger.setLevel(logging.INFO)
