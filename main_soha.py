@@ -46,15 +46,15 @@ class SOHA:
         true_co2_value = int(co2_value.hex(), 16)
 
         # id, type, value
-        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), sensor_id, up_util.CO2, true_co2_value))
+        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), sensor_id, up_util.CO2, true_co2_value))
 
         #print("temp value :", int(temp_value.hex(), 16))
         true_temp_value = int(temp_value.hex(), 16) / 10
-        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), sensor_id, up_util.TEMP, true_temp_value))
+        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), sensor_id, up_util.TEMP, true_temp_value))
 
         #print('RH value : ', int(rh_value.hex(), 16))
         true_rh_value = int(rh_value.hex(), 16) / 10
-        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), sensor_id, up_util.HUM, true_rh_value))
+        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), sensor_id, up_util.HUM, true_rh_value))
 
         serial_logger.info('real_co2 value : '+str(true_co2_value)+' ppm')
         serial_logger.info('real_temp_value : '+str(true_temp_value)+'C')

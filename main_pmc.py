@@ -86,13 +86,13 @@ class PMC:
                         # print(res[0:3], type(res[0:3]))
                         temp, vent1, vent2, vent3, error = self.pmc_parser(res)
                         db_manager.insert(query=db_manager.insertQuery,
-                                          params=(datetime.now(), self.sensor_id, up_util.TEMP, temp))
+                                          params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.TEMP, temp))
                         db_manager.insert(query=db_manager.insertQuery,
-                                          params=(datetime.now(), self.sensor_id, up_util.VENT1, vent1))
+                                          params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.VENT1, vent1))
                         db_manager.insert(query=db_manager.insertQuery,
-                                          params=(datetime.now(), self.sensor_id, up_util.VENT2, vent2))
+                                          params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.VENT2, vent2))
                         db_manager.insert(query=db_manager.insertQuery,
-                                          params=(datetime.now(), self.sensor_id, up_util.VENT3, vent3))
+                                          params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.VENT3, vent3))
 
                     else:
                         serial_logger.info(datetime.now(), "CRC UNMATCHED DATA : ", res)

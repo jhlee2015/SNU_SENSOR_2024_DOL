@@ -66,7 +66,7 @@ class DOL:
 
                         # print(res[0:3], type(res[0:3]))
                         nh3 = self.kisan_parser(res)
-                        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now(), self.sensor_id, up_util.NH3, nh3))
+                        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.NH3, nh3))
                     else:
                         serial_logger.info(datetime.now(), "CRC UNMATCHED DATA : ", res)
 
