@@ -41,7 +41,8 @@ class DatabaseManager:
             self.logger.info(f"Connect !!")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error connecting to MySQL Platform: {e}")
-            self.connect()
+            # DB에 접속이 안되더라도 csv 파일로 저장해야되기 때문에 계속 접속하면 안됨
+            # self.connect()
             raise e
 
     def disconnect(self):
