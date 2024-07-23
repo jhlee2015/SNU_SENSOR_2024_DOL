@@ -71,13 +71,15 @@ class DatabaseManager:
 
     def insert(self, query, params):
         try:
-            self.cvslogger(params)
+            csv_data = ','.join(str(param) for param in params)
+            self.cvslogger.info(csv_data)
             self.execute_query(query, params)
             self.logger.info(f"insert ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing insert: {e}")
             self.connect()
             raise e
+        
 
     def update(self, query, params):
         try:
