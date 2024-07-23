@@ -54,6 +54,13 @@ class DatabaseManager:
     def execute_query(self, query, params=None):
         try:
             if self.conn is not None:
+                self.logger.info(f"Connect Fail")
+                with self.conn.cursor() as cursor:
+                    cursor.execute(query, params)
+                self.conn.commit()
+            else :
+                self.logger.info(f"Connect Retry")
+                self.connect()
                 with self.conn.cursor() as cursor:
                     cursor.execute(query, params)
                 self.conn.commit()
@@ -82,7 +89,6 @@ class DatabaseManager:
             self.logger.info(f"Error executing insert: {e}")
             self.connect()
             #raise e
-        
 
     def update(self, query, params):
         try:
