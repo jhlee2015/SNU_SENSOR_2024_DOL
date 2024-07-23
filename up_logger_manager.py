@@ -5,7 +5,7 @@ import up_util
 
 FORMATTER = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-CSV_FORMATTER = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+CSV_FORMATTER = logging.Formatter('%(message)s')
 
 
 def singleton(cls):
