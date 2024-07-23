@@ -1,4 +1,5 @@
 .idea/.gitignore
+config.ini
 .idea/misc.xml
 .idea/modules.xml
 .idea/SNU_SENSOR_2024_DOL.iml
