@@ -63,7 +63,7 @@ class DatabaseManager:
                     cursor.execute(query, params)
                 self.conn.commit()
             else :
-                self.logger.info(f"Execute Fail "+str(self.conn_count)
+                self.logger.info(f"Execute Fail "+str(self.conn_count))
                 self.conn_count += 1
                 if self.conn_count == 10:
                     self.connect()
