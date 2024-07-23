@@ -34,6 +34,7 @@ class LoggerManager:
         self.db_logger = self.makeHandler("db")
         self.csv_logger = self.makeCsvHandler("csv")
 
+    # csv 생성용 로그
     @staticmethod
     def makeHandler(name=None):
         handler = logging.handlers.TimedRotatingFileHandler(filename="log/" + name + ".log", when='midnight')
