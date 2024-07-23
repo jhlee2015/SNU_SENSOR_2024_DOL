@@ -43,8 +43,7 @@ class DatabaseManager:
             self.logger.info(f"Error connecting to MySQL Platform: {e}")
             # DB에 접속이 안되더라도 csv 파일로 저장해야되기 때문에 계속 접속하면 안됨
             # 10분 단위로 재접속을 시도하게 한다.
-            time.sleep(10)
-            self.connect()
+            
             # self.connect()
             # raise 사용하면 런타임 예외가 발생하여 중단된다.
             # raise e
@@ -63,6 +62,7 @@ class DatabaseManager:
                 self.conn.commit()
             else :
                 self.logger.info(f"Execute Fail")
+                self.connect()    
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing query: {e}")
             self.connect()
