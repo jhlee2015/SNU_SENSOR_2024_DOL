@@ -56,8 +56,8 @@ class CWSDS:
         true_wind_direction_value = int(wind_direction_value.hex(), 16) / 10
 
         db_manager.insert(query=db_manager.insertKnuCowQuery,
-                          params=(datetime.now(), true_wind_id, up_util.WIND_SPEED_DIRECTION,
-                                  true_wind_speed_value, true_wind_direction_value))
+                  params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), true_wind_id, up_util.WIND_SPEED_DIRECTION,
+                      true_wind_speed_value, true_wind_direction_value))
 
         serial_logger.info('sensor id :'+str(true_wind_id))
         serial_logger.info('real wind speed value : '+str(true_wind_speed_value)+'m/s')
