@@ -62,7 +62,7 @@ class DatabaseManager:
                 self.conn.commit()
             else :
                 self.logger.info(f"Execute Fail")
-                self.connect()    
+                #self.connect()    
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing query: {e}")
             self.connect()
