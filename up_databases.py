@@ -66,8 +66,9 @@ class DatabaseManager:
                 self.logger.info(f"Execute Fail "+str(self.conn_count))
                 self.conn_count += 1
                 if self.conn_count == 10:
+                    self.logger.info(f"Db Connection Fail 10 times Retry")
+                    self.conn_count = 0                    
                     self.connect()
-                #self.connect()    
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing query: {e}")
             self.conn_count += 1
