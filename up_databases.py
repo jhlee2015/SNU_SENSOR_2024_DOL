@@ -59,7 +59,7 @@ class DatabaseManager:
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing query: {e}")
             self.connect()
-            raise e
+            #raise e
 
     def select(self, query, params=None):
         try:
@@ -69,40 +69,37 @@ class DatabaseManager:
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing select: {e}")
             self.connect()
-            raise e
+            #raise e
 
     def insert(self, query, params):
         try:
             csv_data = ','.join(str(param) for param in params)
             self.cvslogger.info(csv_data)
-            with self.conn.cursor() as cursor:
-                cursor.execute_query(query, params)
-                self.logger.info(f"insert ok")
+            self.execute_query(query, params)
+            self.logger.info(f"insert ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing insert: {e}")
             self.connect()
-            raise e
+            #raise e
         
 
     def update(self, query, params):
         try:
-            with self.conn.cursor() as cursor:
-                cursor.execute_query(query, params)
-                self.logger.info(f"update ok")
+            self.execute_query(query, params)
+            self.logger.info(f"update ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing update: {e}")
             self.connect()
-            raise e
+            #raise e
 
     def delete(self, query, params):
         try:
-            with self.conn.cursor() as cursor:
-                cursor.execute_query(query, params)
-                self.logger.info(f"delete ok")
+            self.execute_query(query, params)
+            self.logger.info(f"delete ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing delete: {e}")
             self.connect()
-            raise e
+            #raise e
 
 
 if __name__ == '__main__':
