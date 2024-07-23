@@ -30,6 +30,7 @@ class LoggerManager:
         self.info_logger = self.makeHandler("info")
         self.serial_logger = self.makeHandler("serial")
         self.db_logger = self.makeHandler("db")
+        self.csv_logger = self.makeHandler("csv")
 
     @staticmethod
     def makeHandler(name=None):

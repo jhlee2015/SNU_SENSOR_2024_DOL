@@ -9,6 +9,7 @@ import up_config_manager
 
 
 # mysql에 접속하고 disconnect되었을 때 재접하는 클레스
+# 저장할 때 csv 형태로 같이 저장하게 한다.
 class DatabaseManager:
     insertQuery = 'insert into tb_sensing_value(create_dt, sensor_id, sensor_type, sensing_value) values(%s, %s, %s, %s)'
 
@@ -16,6 +17,7 @@ class DatabaseManager:
 
     def __init__(self):
         self.logger = up_logger_manager.LoggerManager().get_logger("db")
+        self.cvslogger = up_logger_manager.LoggerManager().get_logger("csv")
         db_config = up_config_manager.ConfigManager().get_database_config()
         print(db_config)
 
@@ -69,6 +71,7 @@ class DatabaseManager:
 
     def insert(self, query, params):
         try:
+            self.cvslogger(params)
             self.execute_query(query, params)
             self.logger.info(f"insert ok")
         except pymysql.MySQLError as e:
