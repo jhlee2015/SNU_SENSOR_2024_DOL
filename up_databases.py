@@ -74,8 +74,9 @@ class DatabaseManager:
         try:
             csv_data = ','.join(str(param) for param in params)
             self.cvslogger.info(csv_data)
-            self.execute_query(query, params)
-            self.logger.info(f"insert ok")
+            with self.conn.cursor() as cursor:
+                cursor.execute_query(query, params)
+                self.logger.info(f"insert ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing insert: {e}")
             self.connect()
@@ -84,8 +85,9 @@ class DatabaseManager:
 
     def update(self, query, params):
         try:
-            self.execute_query(query, params)
-            self.logger.info(f"update ok")
+            with self.conn.cursor() as cursor:
+                cursor.execute_query(query, params)
+                self.logger.info(f"update ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing update: {e}")
             self.connect()
@@ -93,8 +95,9 @@ class DatabaseManager:
 
     def delete(self, query, params):
         try:
-            self.execute_query(query, params)
-            self.logger.info(f"delete ok")
+            with self.conn.cursor() as cursor:
+                cursor.execute_query(query, params)
+                self.logger.info(f"delete ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing delete: {e}")
             self.connect()
