@@ -28,6 +28,7 @@ class DatabaseManager:
         self.db = db_config['database']
         self.charset = db_config['charset']
         self.conn = None
+        self.conn_count = 0
         self.connect()
 
     def connect(self):
@@ -41,6 +42,7 @@ class DatabaseManager:
             self.logger.info(f"Connect !!")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error connecting to MySQL Platform: {e}")
+            self.conn_count += 1
             # DB에 접속이 안되더라도 csv 파일로 저장해야되기 때문에 계속 접속하면 안됨
             # 10분 단위로 재접속을 시도하게 한다.
             
@@ -61,12 +63,16 @@ class DatabaseManager:
                     cursor.execute(query, params)
                 self.conn.commit()
             else :
-                self.logger.info(f"Execute Fail")
+                self.logger.info(f"Execute Fail "+str(self.conn_count)
+                self.conn_count += 1
+                if self.conn_count == 10:
+                    self.connect()
                 #self.connect()    
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing query: {e}")
-            self.connect()
-            #raise e
+            self.conn_count += 1
+            # self.connect()
+            # raise e
 
     def select(self, query, params=None):
         try:
@@ -75,37 +81,37 @@ class DatabaseManager:
                 return cursor.fetchall()
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing select: {e}")
-            self.connect()
-            #raise e
+            # self.connect()
+            # raise e
 
     def insert(self, query, params):
         try:
             csv_data = ','.join(str(param) for param in params)
             self.cvslogger.info(csv_data)
             self.execute_query(query, params)
-            self.logger.info(f"insert ok")
+            #self.logger.info(f"insert ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing insert: {e}")
-            self.connect()
-            #raise e
+            # self.connect()
+            # raise e
 
     def update(self, query, params):
         try:
             self.execute_query(query, params)
-            self.logger.info(f"update ok")
+            #self.logger.info(f"update ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing update: {e}")
-            self.connect()
-            #raise e
+            # self.connect()
+            # raise e
 
     def delete(self, query, params):
         try:
             self.execute_query(query, params)
-            self.logger.info(f"delete ok")
+            #self.logger.info(f"delete ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing delete: {e}")
-            self.connect()
-            #raise e
+            # self.connect()
+            # raise e
 
 
 if __name__ == '__main__':
