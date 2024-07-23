@@ -53,8 +53,9 @@ class DatabaseManager:
 
     def execute_query(self, query, params=None):
         try:
-            with self.conn.cursor() as cursor:
-                cursor.execute(query, params)
+            if self.conn is not None:
+                with self.conn.cursor() as cursor:
+                    cursor.execute(query, params)
                 self.conn.commit()
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing query: {e}")
