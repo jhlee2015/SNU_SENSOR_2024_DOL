@@ -27,6 +27,11 @@ class ConfigManager:
         print(current_dir + '/config.ini')
         self.config.read(current_dir + '/config.ini',encoding='utf-8')
 
+    def get_os_config(self):
+        os_config = {
+            'os_name': self.config.get('OS', 'OS_NAME')
+        }
+        return os_config
 
     def get_database_config(self):
         db_config = {
