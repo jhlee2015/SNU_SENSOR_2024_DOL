@@ -56,6 +56,11 @@ class DatabaseManager:
             self.logger.info(f"Disconnect !!")
 
     def execute_query(self, query, params=None):
+        if self.conn_count == 10:
+                self.disconnect()
+                self.logger.info(f"Db Connection Fail 10 times Retry")
+                self.conn_count = 0                    
+                self.connect()
         try:
             if self.conn is not None:
                 self.logger.info(f"Execute Success")
@@ -65,13 +70,10 @@ class DatabaseManager:
             else :
                 self.logger.info(f"Execute Fail "+str(self.conn_count))
                 self.conn_count += 1
-                if self.conn_count == 10:
-                    self.logger.info(f"Db Connection Fail 10 times Retry")
-                    self.conn_count = 0                    
-                    self.connect()
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing query: {e}")
             self.conn_count += 1
+            
             # self.connect()
             # raise e
 
@@ -89,6 +91,15 @@ class DatabaseManager:
         try:
             csv_data = ','.join(str(param) for param in params)
             self.cvslogger.info(csv_data)
+            self.execute_query(query, params)
+            #self.logger.info(f"insert ok")
+        except pymysql.MySQLError as e:
+            self.logger.info(f"Error executing insert: {e}")
+            # self.connect()
+            # raise e
+    
+    def backUpinsert(self, query, params):
+        try:
             self.execute_query(query, params)
             #self.logger.info(f"insert ok")
         except pymysql.MySQLError as e:

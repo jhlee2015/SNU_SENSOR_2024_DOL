@@ -1710,3 +1710,12 @@ __pycache__/up_config_manager.cpython-38.pyc
 __pycache__/up_databases.cpython-38.pyc
 __pycache__/up_logger_manager.cpython-38.pyc
 __pycache__/up_util.cpython-38.pyc
+log/csv.log
+log/db.log.2024-07-18
+log/db.log.2024-07-23
+log/db.log.2024-07-29
+log/db.log.2024-07-30
+log/sensing_value_old.csv
+log/serial.log.2024-07-18
+config.ini
+
