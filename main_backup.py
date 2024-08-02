@@ -54,3 +54,16 @@ elif os_config.get('os_name') == 'LINUX':
                 print('row' + str(row))
                 db_manager.backUpinsert(query=db_manager.insertQuery, params=(row[0], row[1], row[2], row[3]))
             print('Finished reading CSV')
+
+elif os_config.get('os_name') == 'LINUX_UNIT':
+
+    # linux용
+    with open('log/csv.log', 'r') as file:
+        print('Reading CSV')
+        csv_reader = csv.reader(file)
+        print(csv_reader)
+
+        for row in csv_reader:
+            print('row' + str(row))
+            db_manager.backUpinsert(query=db_manager.insertQuery, params=(row[0], row[1], row[2], row[3]))
+        print('Finished reading CSV')
