@@ -31,7 +31,7 @@ if os_config.get('os_name') == 'WINDOW':
             db_manager.backUpinsert(query=db_manager.insertQuery, params=(row[0], row[1], row[2], row[3]))
         print('Finished reading CSV')
 
-elif os_config.get('OS') == 'LINUX':
+elif os_config.get('os_name') == 'LINUX':
     # linux용
     with open('log/sensing_value_old.csv', 'r') as file:
         print('Reading CSV')
