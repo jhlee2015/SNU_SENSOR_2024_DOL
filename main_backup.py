@@ -32,6 +32,7 @@ if os_config.get('os_name') == 'WINDOW':
         print('Finished reading CSV')
 
 elif os_config.get('os_name') == 'LINUX':
+
     # linux용
     with open('log/sensing_value_old.csv', 'r') as file:
         print('Reading CSV')
