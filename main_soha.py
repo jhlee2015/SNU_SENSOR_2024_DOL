@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import threading
 import time
-import serial
+#import serial
 from datetime import datetime
+
+import serial
 
 import up_config_manager
 import up_util
@@ -15,7 +17,7 @@ class SOHA:
     soha_req = bytearray([0x01, 0x03, 0x00, 0x64, 0x00, 0x03, 0x44, 0x14])
 
     def __init__(self):
-        serial_config = up_config_manager.ConfigManager().get_serial_config('S0')
+        serial_config = up_config_manager.ConfigManager().get_serial_config('WINDOW')
         sensor_id = up_config_manager.ConfigManager().get_sensor_id()
         print(serial_config)
         print(sensor_id)
@@ -37,7 +39,7 @@ class SOHA:
             time.sleep(60)
 
     @staticmethod
-    def soha_parser(data, sensor_id):
+    def soha_parser(data, device_id):
         co2_value = data[3:5]
         temp_value = data[5:7]
         rh_value = data[7:9]
@@ -46,15 +48,16 @@ class SOHA:
         true_co2_value = int(co2_value.hex(), 16)
 
         # id, type, value
-        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), sensor_id, up_util.CO2, true_co2_value))
+        db_manager.update(query=db_manager.updateSensorQuery, params=(device_id, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), device_id, up_util.CO2, true_co2_value))
+        db_manager.insert(query=db_manager.insertSensorLogQuery, params=(device_id, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), device_id, up_util.CO2, true_co2_value))
 
         #print("temp value :", int(temp_value.hex(), 16))
         true_temp_value = int(temp_value.hex(), 16) / 10
-        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), sensor_id, up_util.TEMP, true_temp_value))
+        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), device_id, up_util.TEMP, true_temp_value))
 
         #print('RH value : ', int(rh_value.hex(), 16))
         true_rh_value = int(rh_value.hex(), 16) / 10
-        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), sensor_id, up_util.HUM, true_rh_value))
+        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), device_id, up_util.HUM, true_rh_value))
 
         serial_logger.info('real_co2 value : '+str(true_co2_value)+' ppm')
         serial_logger.info('real_temp_value : '+str(true_temp_value)+'C')
@@ -95,7 +98,7 @@ if __name__ == '__main__':
             soha.main_loof()
 
         except Exception as E:
-            serial_logger.info('main error' + str(E))
+            serial_logger.info('main error ' + str(E))
             if soha.ser is not None:
                 serial_logger.info('serial close ok')
                 soha.ser.close()
