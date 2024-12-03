@@ -11,8 +11,9 @@ import up_config_manager
 # mysql에 접속하고 disconnect되었을 때 재접하는 클레스
 # 저장할 때 csv 형태로 같이 저장하게 한다.
 class DatabaseManager:
-    updateSensorQuery = 'update tb_sensor_value set timestamp=%s, sensing_value=%s  WHERE (device_id = %s)'
-    insertSensorLogQuery = 'insert into tb_sensing_value_202411(device_id, timestamp, sensing_value) values(%s, %s, %s, %s)'
+    updateSensorQuery = 'update tb_sensor_value set timestamp=%s, sensing_value=%s  WHERE (device_id = %s and sensor_type = %s)'
+    selectSensorQuery = 'select * from tb_sensor_value where device_id = %s and sensor_type = %s'
+    insertSensorQuery = 'insert into tb_sensor_value(device_id, timestamp, sensor_type, sensing_value) values(%s, %s, %s, %s)'
 
     insertKnuCowQuery = 'insert into tb_sensing_value(create_dt, sensor_id, sensor_type, wind_speed_value, wind_direction_value) values(%s, %s, %s, %s, %s)'
 
@@ -117,6 +118,23 @@ class DatabaseManager:
             # self.connect()
             # raise e
 
+    def updateSensor(self, SV):
+        try:
+            if self.select(query=self.selectSensorQuery, params=(SV.device_id, SV.sensor_type)):
+                self.update(query=self.updateSensorQuery, params=(SV.device_id, SV.sensor_type, SV.timestamp, SV.sensing_value))
+                self.logger.info(f"update ok")
+            else:
+                self.insert(query=self.insertSensorQuery, params=(SV.device_id, SV.timestamp, SV.sensor_type, SV.sensing_value))
+                self.logger.info(f"insert ok")
+            # 로그 저장
+            make_log_query = self.get_insert_sensor_log_query('tb_sensing_value_'+SV.log_date)
+            # print(make_log_query)
+            self.insert(query=make_log_query, params=(SV.device_id, SV.timestamp, SV.sensor_type, SV.sensing_value))
+        except pymysql.MySQLError as e:
+            self.logger.info(f"Error executing update: {e}")
+            # self.connect()
+            # raise e
+
     def delete(self, query, params):
         try:
             self.execute_query(query, params)
@@ -125,7 +143,37 @@ class DatabaseManager:
             self.logger.info(f"Error executing delete: {e}")
             # self.connect()
             # raise e
+    
+    def check_table_exists(self, db_config, table_name):
+        try:
+            with self.conn.cursor() as cursor:
+                cursor.execute(f"SHOW TABLES LIKE '{table_name}';")
+                result = cursor.fetchone()
+                return result is not None
+        except pymysql.MySQLError as e:
+            self.logger.info(f"Error executing table check: {e}")
+            # self.connect()
+            # raise e
 
+    def get_insert_sensor_log_query(self, table_name):
+        return f'insert into {table_name}(device_id, timestamp, sensor_type, sensing_value) values(%s, %s, %s, %s)'
+
+
+# device_id, timestamp, sensor_type, sensing_value을 포함한 객체 클레스
+class SENSOR_VALUE:
+    def __init__(self, device_id, timestamp, sensor_type, sensing_value, log_date):
+        self.device_id = device_id
+        self.timestamp = timestamp
+        self.sensor_type = sensor_type
+        self.sensing_value = sensing_value
+        self.log_date = log_date
+
+    def __str__(self):
+        return f"device_id: {self.device_id}, timestamp: {self.timestamp}, sensor_type: {self.sensor_type}, sensing_value: {self.sensing_value}, log_date: {self.log_date}"
+    
+
+
+  
 
 if __name__ == '__main__':
     log_manager = up_logger_manager.LoggerManager()

@@ -97,21 +97,23 @@ class WD3000:
                 if res:
                     # print(res[0:3], type(res[0:3]))
                     domain = self.wd3000_parser(str(res.decode('utf-8')))
-                    db_manager.insert(query=db_manager.insertQuery,
-                                      params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.RAIN_DURING_INTERVAL, domain.rain_during_interval))
-                    db_manager.insert(query=db_manager.insertQuery,
-                                      params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.TEMP, domain.temp))
-                    db_manager.insert(query=db_manager.insertQuery,
-                                      params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.HUM, domain.rh))
-                    db_manager.insert(query=db_manager.insertQuery,
-                                      params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.WIND, domain.wind))
-                    db_manager.insert(query=db_manager.insertQuery,
-                                      params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.MAX_WIND, domain.maxwind))
-                    db_manager.insert(query=db_manager.insertQuery,
-                                      params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.CUR_WIND, domain.curwind))
-                    db_manager.insert(query=db_manager.insertQuery,
-                                      params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.SOLAR_RADIATION, domain.solar_radiation))
-
+                    now_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    log_date =datetime.now().strftime("%Y%m")
+                    
+                    SV = up_databases.SENSOR_VALUE(self.sensor_id, now_date, up_util.RAIN_DURING_INTERVAL, domain.rain_during_interval, log_date)
+                    db_manager.updateSensor(SV)
+                    SV = up_databases.SENSOR_VALUE(self.sensor_id, now_date, up_util.TEMP, domain.temp, log_date)
+                    db_manager.updateSensor(SV)
+                    SV = up_databases.SENSOR_VALUE(self.sensor_id, now_date, up_util.HUM, domain.rh, log_date)
+                    db_manager.updateSensor(SV)
+                    SV = up_databases.SENSOR_VALUE(self.sensor_id, now_date, up_util.WIND, domain.wind, log_date)
+                    db_manager.updateSensor(SV)
+                    SV = up_databases.SENSOR_VALUE(self.sensor_id, now_date, up_util.MAX_WIND, domain.maxwind, log_date)
+                    db_manager.updateSensor(SV)
+                    SV = up_databases.SENSOR_VALUE(self.sensor_id, now_date, up_util.CUR_WIND, domain.curwind, log_date)
+                    db_manager.updateSensor(SV)
+                    SV = up_databases.SENSOR_VALUE(self.sensor_id, now_date, up_util.SOLAR_RADIATION, domain.solar_radiation, log_date)
+                    db_manager.updateSensor(SV)
 
 if __name__ == '__main__':
 

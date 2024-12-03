@@ -3,9 +3,7 @@ import threading
 import time
 #import serial
 from datetime import datetime
-
 import serial
-
 import up_config_manager
 import up_util
 import up_logger_manager
@@ -44,20 +42,29 @@ class SOHA:
         temp_value = data[5:7]
         rh_value = data[7:9]
 
+        now_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        log_date =datetime.now().strftime("%Y%m")
+
         #print("Co2 value :", int(co2_value.hex(), 16))
         true_co2_value = int(co2_value.hex(), 16)
 
         # id, type, value
-        db_manager.update(query=db_manager.updateSensorQuery, params=(device_id, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), device_id, up_util.CO2, true_co2_value))
-        db_manager.insert(query=db_manager.insertSensorLogQuery, params=(device_id, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), device_id, up_util.CO2, true_co2_value))
+        # update 하기전에 컬럼이 존재 하는지 확인하기
+        SV = up_databases.SENSOR_VALUE(device_id, now_date, up_util.CO2, true_co2_value, log_date)
+        # db에 device_id가 있는지 확인 update하기
+        # 월별 DB테이블 생성하여 저장
+        db_manager.updateSensor(SV)
 
         #print("temp value :", int(temp_value.hex(), 16))
         true_temp_value = int(temp_value.hex(), 16) / 10
-        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), device_id, up_util.TEMP, true_temp_value))
+        SV = up_databases.SENSOR_VALUE(device_id, now_date, up_util.TEMP, true_temp_value, log_date)
+        db_manager.updateSensor(SV)
+
 
         #print('RH value : ', int(rh_value.hex(), 16))
         true_rh_value = int(rh_value.hex(), 16) / 10
-        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), device_id, up_util.HUM, true_rh_value))
+        SV = up_databases.SENSOR_VALUE(device_id, now_date, up_util.HUM, true_rh_value, log_date)
+        db_manager.updateSensor(SV)
 
         serial_logger.info('real_co2 value : '+str(true_co2_value)+' ppm')
         serial_logger.info('real_temp_value : '+str(true_temp_value)+'C')
