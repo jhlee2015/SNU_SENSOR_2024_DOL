@@ -11,8 +11,8 @@ import up_config_manager
 # mysql에 접속하고 disconnect되었을 때 재접하는 클레스
 # 저장할 때 csv 형태로 같이 저장하게 한다.
 class DatabaseManager:
-    updateSensorQuery = 'update tb_sensor_value set timestamp=%s, sensing_value=%s  WHERE (device_id = %s and sensor_type = %s)'
     selectSensorQuery = 'select * from tb_sensor_value where device_id = %s and sensor_type = %s'
+    updateSensorQuery = 'update tb_sensor_value set timestamp=%s, sensing_value=%s  WHERE (device_id = %s and sensor_type = %s)'
     insertSensorQuery = 'insert into tb_sensor_value(device_id, timestamp, sensor_type, sensing_value) values(%s, %s, %s, %s)'
 
     insertKnuCowQuery = 'insert into tb_sensing_value(create_dt, sensor_id, sensor_type, wind_speed_value, wind_direction_value) values(%s, %s, %s, %s, %s)'
