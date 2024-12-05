@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import up_logger_manager
 import os
 
