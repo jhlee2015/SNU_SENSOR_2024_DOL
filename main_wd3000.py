@@ -98,7 +98,7 @@ class WD3000:
                     # print(res[0:3], type(res[0:3]))
                     domain = self.wd3000_parser(str(res.decode('utf-8')))
                     now_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                    log_date =datetime.now().strftime("%Y%m")
+                    log_date = datetime.now().strftime("%Y%m")
                     
                     SV = up_databases.SENSOR_VALUE(self.sensor_id, now_date, up_util.RAIN_DURING_INTERVAL, domain.rain_during_interval, log_date)
                     db_manager.updateSensor(SV)
