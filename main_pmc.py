@@ -43,7 +43,8 @@ class PMC:
             serial_logger.info(ret)
 
             #pmc
-            temp = PMC.TEMP(DATA[3:5]) #온도
+            temp_data = DATA[3:5]
+            temp = PMC.TEMP(up_util.twos_complement(int(temp_data.hex(), 16), 16)) #온도
             vent1 = PMC.VENT(DATA[5:7]) #VENT1(%)
             vent2 = PMC.VENT(DATA[7:9]) #VENT2(%)
             vent3 = PMC.VENT(DATA[9:11]) #VENT3(%)
@@ -58,8 +59,8 @@ class PMC:
 
     @staticmethod
     def TEMP(data):
-        n = up_util.twos_complement(int(data.hex(), 16), 16) / 10
-        n2 = float(n / 10)
+        #n = up_util.twos_complement(int(data.hex(), 16), 16) / 10
+        n2 = float(data / 10)
         temp = "{0:.2f}".format(n2)
         return temp
 
