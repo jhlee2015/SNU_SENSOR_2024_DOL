@@ -57,7 +57,7 @@ class SOHA:
 
         #print("temp value :", int(temp_value.hex(), 16))
         # temp_value 2byte int 값을 음수값으로 표현하기 위해 2의 보수로 변환
-        true_temp_value = up_util.twos_complement(int(temp_value.hex(), 16), 16) / 10
+        true_temp_value = util.twos_complement(int(temp_value.hex(), 16), 16) / 10
         SV = up_databases.SENSOR_VALUE(device_id, now_date, up_util.TEMP, true_temp_value, log_date)
         db_manager.updateSensor(SV)
 
