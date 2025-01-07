@@ -109,3 +109,19 @@ class UTIL:
             else:
                 str = str + ''.join(hexlist[i])
                 return str
+    
+    #2의 보수로 변환
+    @staticmethod
+    def twos_complement(value, bit_width):
+        if value >= 2**(bit_width - 1):
+            value -= 2**bit_width
+        return value
+    
+# main 테스트 코드
+if __name__ == '__main__':
+    util = UTIL()
+    test_value_array = bytes([0x12, 0x34])
+    test_value = int(test_value_array.hex(), 16)
+
+    test_value = 50027
+    print(util.twos_complement(test_value, 16) / 10)

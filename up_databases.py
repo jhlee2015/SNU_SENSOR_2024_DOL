@@ -7,6 +7,7 @@ from dateutil.parser import parse
 import pymysql
 import up_logger_manager
 import up_config_manager
+from up_util import UTIL
 
 
 # mysql에 접속하고 disconnect되었을 때 재접하는 클레스
@@ -183,11 +184,23 @@ if __name__ == '__main__':
     serial_logger = log_manager.get_logger('serial')
 
     dbManager = DatabaseManager()
-    while True:
-        try:
-            serial_logger.info('Databases Test Start')
-            dbManager.insert(query=DatabaseManager.insertQuery, params=(parse('2021-07-01 00:00:00'), '1', '1', '1'))
-            time.sleep(10)
-        except Exception as E:
-            print(E)
-            time.sleep(10)
+    try:
+        serial_logger.info('Databases Test Start')
+        #dbManager.insert(query=DatabaseManager.insertQuery, params=(parse('2021-07-01 00:00:00'), '1', '1', '1'))
+        sensor_list = dbManager.select(query='select * from tb_sensing_value_202412 where sensor_type = 1 and sensing_value > 1000')
+        for sensor in sensor_list:
+            print(sensor)
+            if sensor[4] > 1000:
+                sensor_value = sensor[4]*10
+                # sensor_value 값을 2의 보수 적용하여 계산
+                cal_val = UTIL.twos_complement(sensor_value, 16) / 10
+                print(cal_val)
+                #print(sensor[0])
+        
+                #time.sleep(2)    
+                dbManager.update(query='UPDATE tb_sensing_value_202412 SET sensing_value = %s WHERE id = %s', params=(cal_val, sensor[0]))
+            # dbManager.update(query='UPDATE tb_sensing_value_202412 SET sensing_value = %s WHERE id = %s', params=(1000, sensor[0]))
+        time.sleep(10)
+    except Exception as E:
+        print(E)
+    
