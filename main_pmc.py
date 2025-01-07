@@ -44,7 +44,8 @@ class PMC:
 
             #pmc
             temp_data = DATA[3:5]
-            temp = PMC.TEMP(up_util.twos_complement(int(temp_data.hex(), 16), 16)) #온도
+            temp_value = int(temp_data.hex(), 16)
+            temp = PMC.TEMP(util.twos_complement(temp_value, 16)) #온도
             vent1 = PMC.VENT(DATA[5:7]) #VENT1(%)
             vent2 = PMC.VENT(DATA[7:9]) #VENT2(%)
             vent3 = PMC.VENT(DATA[9:11]) #VENT3(%)
