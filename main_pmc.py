@@ -48,6 +48,7 @@ class PMC:
             vent2 = PMC.VENT(DATA[7:9]) #VENT2(%)
             vent3 = PMC.VENT(DATA[9:11]) #VENT3(%)
             pmc_error = PMC.ERROR(DATA[11:13])  # error
+
             serial_logger.info("temp val : " + temp)
             serial_logger.info("vent1 val : " + vent1+",vent1 val : " + vent2+",vent1 val : " + vent3)
             serial_logger.info("error val : " + pmc_error)
@@ -57,7 +58,7 @@ class PMC:
 
     @staticmethod
     def TEMP(data):
-        n = int(data.hex(), 16)
+        n = up_util.twos_complement(int(data.hex(), 16), 16) / 10
         n2 = float(n / 10)
         temp = "{0:.2f}".format(n2)
         return temp
@@ -81,7 +82,6 @@ class PMC:
                 if res:
                     if util.crc16(res) == [0, 0]:
                         util.hextodec(res, "response data : ")  # byte형식
-
 
                         # print(res[0:3], type(res[0:3]))
                         now_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")

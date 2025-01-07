@@ -172,10 +172,6 @@ class SENSOR_VALUE:
 
     def __str__(self):
         return f"device_id: {self.device_id}, timestamp: {self.timestamp}, sensor_type: {self.sensor_type}, sensing_value: {self.sensing_value}, log_date: {self.log_date}"
-    
-
-
-  
 
 if __name__ == '__main__':
     log_manager = up_logger_manager.LoggerManager()
