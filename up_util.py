@@ -123,5 +123,5 @@ if __name__ == '__main__':
     test_value_array = bytes([0x12, 0x34])
     test_value = int(test_value_array.hex(), 16)
 
-    #test_value = 50027
+    test_value = 50027.4
     print(util.twos_complement(test_value, 16) / 10)

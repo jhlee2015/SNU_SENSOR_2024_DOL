@@ -87,7 +87,10 @@ class DatabaseManager:
                 cursor.execute(query, params)
                 return cursor.fetchall()
         except pymysql.MySQLError as e:
-            self.logger.info(f"Error executing select: {e}")
+            self.conn_count += 1
+            self.logger.info(f"Error executing select: {e},conn_count:{self.conn_count}")
+            if self.conn_count > 10:
+                self.execute_query(query, params)
             # self.connect()
             # raise e
 
@@ -96,27 +99,36 @@ class DatabaseManager:
             csv_data = ','.join(str(param) for param in params)
             self.cvslogger.info(csv_data)
             self.execute_query(query, params)
-            #self.logger.info(f"insert ok")
+            # self.logger.info(f"insert ok")
         except pymysql.MySQLError as e:
-            self.logger.info(f"Error executing insert: {e}")
+            self.conn_count += 1
+            self.logger.info(f"Error executing insert: {e},conn_count:{self.conn_count}")
+            if self.conn_count > 10:
+                self.execute_query(query, params)
             # self.connect()
             # raise e
-    
+
     def backUpinsert(self, query, params):
         try:
             self.execute_query(query, params)
-            #self.logger.info(f"insert ok")
+            # self.logger.info(f"insert ok")
         except pymysql.MySQLError as e:
-            self.logger.info(f"Error executing insert: {e}")
+            self.conn_count += 1
+            self.logger.info(f"Error executing insert: {e},conn_count:{self.conn_count}")
+            if self.conn_count > 10:
+                self.execute_query(query, params)
             # self.connect()
             # raise e
 
     def update(self, query, params):
         try:
             self.execute_query(query, params)
-            #self.logger.info(f"update ok")
+            # self.logger.info(f"update ok")
         except pymysql.MySQLError as e:
-            self.logger.info(f"Error executing update: {e}")
+            self.conn_count += 1
+            self.logger.info(f"Error executing update: {e},conn_count:{self.conn_count}")
+            if self.conn_count > 10:
+                self.execute_query(query, params)
             # self.connect()
             # raise e
 
@@ -183,7 +195,7 @@ if __name__ == '__main__':
     try:
         serial_logger.info('Databases Test Start')
         #dbManager.insert(query=DatabaseManager.insertQuery, params=(parse('2021-07-01 00:00:00'), '1', '1', '1'))
-        sensor_list = dbManager.select(query='select * from tb_sensing_value_202412 where sensor_type = 1 and sensing_value > 1000')
+        sensor_list = dbManager.select(query='select * from tb_sensing_value_202501 where sensor_type = 1 and sensing_value > 1000')
         for sensor in sensor_list:
             print(sensor)
             if sensor[4] > 1000:
@@ -194,7 +206,8 @@ if __name__ == '__main__':
                 #print(sensor[0])
         
                 #time.sleep(2)    
-                dbManager.update(query='UPDATE tb_sensing_value_202412 SET sensing_value = %s WHERE id = %s', params=(cal_val, sensor[0]))
+                dbManager.update(query='UPDATE tb_sensing_value_202501 SET sensing_value = %s, timestamp = %s WHERE id = %s', params=(cal_val, sensor[2], sensor[0]))
+                #time.sleep(1000)
             # dbManager.update(query='UPDATE tb_sensing_value_202412 SET sensing_value = %s WHERE id = %s', params=(1000, sensor[0]))
         time.sleep(10)
     except Exception as E:
