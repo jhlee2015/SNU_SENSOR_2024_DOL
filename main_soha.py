@@ -76,7 +76,7 @@ class SOHA:
         while True:
             if self.ser.readable():
                 # print('start')
-                res = self.ser.readline()
+                res = self.ser.read(11)
                 if res:
                     if util.crc16(res) == [0, 0]:
                         ret = util.hextodec(res, "input : ")  # byte형식
