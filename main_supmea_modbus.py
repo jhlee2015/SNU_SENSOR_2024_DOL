@@ -54,7 +54,7 @@ class SUPMEA:
                         print(f"[read success] address {self.address}, Count{self.count} : {values}")
                         cal_val = (values[0] / 65535.0) * 20.0  # [0] 0채널
                         print(f"{cal_val:.3f} mA")
-                        cal_val_bar = up_util.current_to_bar(cal_val)
+                        cal_val_bar = up_util.UTIL.current_to_bar(cal_val)
 
                         res = self.apiManager.send_sensor_data("irrigation_sensor", "s001", "press", cal_val_bar)
                         serial_logger.info(f"api request Test Start,{res}")

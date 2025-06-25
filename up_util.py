@@ -122,7 +122,7 @@ class UTIL:
     def current_to_bar(current_mA: float) -> float:
         if current_mA < 4.0:
             return 0.0  # 또는 None, 또는 raise ValueError
-        return (current_mA - 4.0) * (10.0 / 16.0)
+        return round((current_mA - 4.0) * (10.0 / 16.0), 2)
     
 # main 테스트 코드
 if __name__ == '__main__':
