@@ -10,8 +10,8 @@ class apiRequestManager:
 
     def __init__(self):
         server_url = up_config_manager.ConfigManager().get_url()
-        self.server_url = "http://"+server_url['host']+":"+server_url['port']+"/"
-        print(self.server_url)
+        self.url = "http://"+server_url['host']+":"+server_url['port']+"/"
+        print(self.url)
         self.headers = {"Content-Type": "application/json"}
 
     def send_sensor_data(self, url_type, sensor_id, sensor_type, sensor_value):
@@ -23,7 +23,7 @@ class apiRequestManager:
 
         try:
             response = requests.post(
-                self.server_url+str(url_type),
+                self.url+str(url_type),
                 data=json.dumps(data),
                 headers=self.headers,
                 timeout=5

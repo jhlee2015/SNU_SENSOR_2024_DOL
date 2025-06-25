@@ -24,7 +24,7 @@ class SUPMEA:
         self.sensor_id = sensor_id['id']
         self.read_thread = None
         self.db = None
-        self.apiManager = apiRequestManager
+        self.apiManager = apiRequestManager()
         self.slave_id = 1  # 슬레이브 ID
         self.address = 130  # 레지스터 시작 주소
         self.count = 8  # 읽을 레지스터 수
@@ -51,11 +51,12 @@ class SUPMEA:
                         print("read fail:", read_result)
                     else:
                         values = read_result.registers
-                        print(f"[read success] address {self.address}, Count{self.count} : {self.values}")
+                        print(f"[read success] address {self.address}, Count{self.count} : {values}")
                         cal_val = (values[0] / 65535.0) * 20.0  # [0] 0채널
                         print(f"{cal_val:.3f} mA")
+                        cal_val_bar = up_util.current_to_bar(cal_val)
 
-                        res = self.apiManager.send_sensor_data("irrigation_sensor", "s001", "press", cal_val)
+                        res = self.apiManager.send_sensor_data("irrigation_sensor", "s001", "press", cal_val_bar)
                         serial_logger.info(f"api request Test Start,{res}")
 
                     #client.close()
@@ -88,7 +89,7 @@ if __name__ == '__main__':
             sup.read_thread.start()
             while True:
                 serial_logger.info("main Alive!! ")
-                if sup.read_thread.read_thread is None or not sup.read_thread.read_thread.is_alive():
+                if sup.read_thread is None or not sup.read_thread.is_alive():
                     serial_logger.warning("thread dead! restarting...")
                     sup.read_thread.read_thread = threading.Thread(target=SUPMEA.readthread, args=(sup.client,))
                     sup.read_thread.read_thread.daemon = True
