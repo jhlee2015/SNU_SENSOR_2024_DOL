@@ -30,7 +30,7 @@ class SUPMEA:
     def app_init(self):
         self.client = ModbusClient(
             port=self.port,
-            baudrate=self.baud,
+            baudrate=int(self.baud),
             parity='N',
             stopbits=1,
             bytesize=8,
@@ -91,7 +91,7 @@ if __name__ == '__main__':
     serial_logger = log_manager.get_logger('serial')
 
     while True:
-        serial_logger.info('SNU Dol Sensor Start')
+        serial_logger.info('Han Cnu Kisan Start')
         try:
             sup = SUPMEA()
             sup.app_init()
