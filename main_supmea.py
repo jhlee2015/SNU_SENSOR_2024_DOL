@@ -9,13 +9,14 @@ import up_logger_manager
 import up_databases
 import up_config_manager
 
+# 한기술에서 사용하는 압력센서 supmea, SUP-PX400
 
-class DOL:
+class SUPMEA:
 
     kisan_req = bytearray([0x01, 0x04, 0x00, 0x82, 0x00, 0x08, 0x51, 0xE4])
 
     def __init__(self):
-        serial_config = up_config_manager.ConfigManager().get_serial_config('TTY0')
+        serial_config = up_config_manager.ConfigManager().get_serial_config('AMA2')
         sensor_id = up_config_manager.ConfigManager().get_sensor_id()
         print(serial_config)
         print(sensor_id)
@@ -33,7 +34,7 @@ class DOL:
 
         while True:
             serial_logger.info("Kisan Sensor Request!")
-            ser.write(DOL.kisan_req)
+            ser.write(SUPMEA.kisan_req)
             time.sleep(60)
 
     @staticmethod
@@ -43,7 +44,7 @@ class DOL:
             serial_logger.info(ret)
 
             # NH3
-            nh3 = DOL.NH3(DATA[3:5])
+            nh3 = SUPMEA.NH3(DATA[3:5])
             serial_logger.info("nh3 val : " + nh3)
             return nh3
         except Exception as E:
@@ -73,7 +74,6 @@ class DOL:
                     else:
                         serial_logger.info(datetime.now(), "CRC UNMATCHED DATA : ", res)
 
-
 if __name__ == '__main__':
 
     log_manager = up_logger_manager.LoggerManager()
@@ -86,15 +86,15 @@ if __name__ == '__main__':
     while True:
         serial_logger.info('SNU Dol Sensor Start')
         try:
-            dol = DOL()
-            dol.app_init()
-            thread = threading.Thread(target=DOL.readthread, args=(dol.ser,))  # 시리얼 통신 받는 부분
+            sup = SUPMEA()
+            sup.app_init()
+            thread = threading.Thread(target=SUPMEA.readthread, args=(sup.ser,))  # 시리얼 통신 받는 부분
             thread.start()
-            dol.main_loof()
+            sup.main_loof()
 
         except Exception as E:
             serial_logger.info('main error' + str(E))
-            if dol.ser is not None:
+            if sup.ser is not None:
                 serial_logger.info('serial close ok')
-                dol.ser.close()
+                sup.ser.close()
             time.sleep(10)
