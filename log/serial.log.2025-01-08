@@ -1,0 +1,5 @@
+2025-01-08 10:29:41,683 - serial - INFO - main error could not open port '/dev/ttyS0': FileNotFoundError(2, '지정된 경로를 찾을 수 없습니다.', None, 3)
+2025-01-08 10:29:51,127 - serial - INFO - Databases Test Start
+2025-01-08 10:31:34,381 - serial - INFO - Databases Test Start
+2025-01-08 10:32:45,332 - serial - INFO - Databases Test Start
+2025-01-08 10:33:10,111 - serial - INFO - Databases Test Start

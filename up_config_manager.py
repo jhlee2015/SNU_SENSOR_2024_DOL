@@ -91,3 +91,10 @@ class ConfigManager:
             'id': self.config.get('sensor_id', 'ID')
         }
         return sensor_id
+
+    def get_url(self):
+        url = {
+            'host': self.config.get('url', 'HOST'),
+            'port': self.config.get('url', 'PORT'),
+        }
+        return url
