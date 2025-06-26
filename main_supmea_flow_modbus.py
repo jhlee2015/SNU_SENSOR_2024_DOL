@@ -32,7 +32,7 @@ class SUPMEA:
         self.db = None
         self.apiManager = apiRequestManager()
         self.slave_id = 8  # 슬레이브 ID
-        self.address = 232  # 레지스터 시작 주소
+        self.address = 1000  # 레지스터 시작 주소
         self.count = 2  # 읽을 레지스터 수
         self.client = ModbusClient(
             port=self.port,
