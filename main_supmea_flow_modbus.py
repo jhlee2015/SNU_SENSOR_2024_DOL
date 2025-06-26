@@ -11,6 +11,12 @@ from pymodbus.client.serial import ModbusSerialClient as ModbusClient
 # 한기술에서 사용하는 압력센서 supmea, SUP-PX400
 from up_requests import apiRequestManager
 
+import logging
+
+# pymodbus 로깅 레벨 설정
+logging.basicConfig()
+log = logging.getLogger()
+log.setLevel(logging.DEBUG)  # or logging.INFO
 
 class SUPMEA:
 
