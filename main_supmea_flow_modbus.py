@@ -14,12 +14,12 @@ from up_requests import apiRequestManager
 # Float으로 변환
 import struct
 
-import logging
-
-# pymodbus 로깅 레벨 설정
-logging.basicConfig()
-log = logging.getLogger()
-log.setLevel(logging.DEBUG)  # or logging.INFO
+# import logging
+#
+# # pymodbus 로깅 레벨 설정
+# logging.basicConfig()
+# log = logging.getLogger()
+# log.setLevel(logging.DEBUG)  # or logging.INFO
 
 class SUPMEA:
 
@@ -87,11 +87,15 @@ class SUPMEA:
                     else:
                         # Little Endian flow 계산하기
                         regs = read_result.registers
-                        data = struct.pack('<HHHH', regs[1], regs[0], regs[3], regs[2])
+                        int_raw = struct.pack('<HH', regs[1], regs[0])
+                        int_val = struct.unpack('<f', int_raw)[0]
+                        print(f"reverse flow 정수 값: {int_val}")
 
-                        # 2. float64 (double)로 변환
-                        value = struct.unpack('<d', data)[0]
-                        print(f"reverse flow double 값: {value}")
+                        dec_raw = struct.pack('<HH', regs[3], regs[2])
+                        dec_val = struct.unpack('<f', dec_raw)[0]
+                        print(f"reverse flow 소수 값: {dec_val / 1000}")
+
+                        print(f"reverse flow 최종 값: {int_val + (val / 1000)}")
 
 
                     time.sleep(5)
