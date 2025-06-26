@@ -15,7 +15,7 @@ from up_requests import apiRequestManager
 class SUPMEA:
 
     def __init__(self):
-        serial_config = up_config_manager.ConfigManager().get_serial_config('TTY0')
+        serial_config = up_config_manager.ConfigManager().get_serial_config('AMA2')
         sensor_id = up_config_manager.ConfigManager().get_sensor_id()
         print(serial_config)
         print(sensor_id)
@@ -25,9 +25,9 @@ class SUPMEA:
         self.read_thread = None
         self.db = None
         self.apiManager = apiRequestManager()
-        self.slave_id = 1  # 슬레이브 ID
-        self.address = 130  # 레지스터 시작 주소
-        self.count = 8  # 읽을 레지스터 수
+        self.slave_id = 8  # 슬레이브 ID
+        self.address = 232  # 레지스터 시작 주소
+        self.count = 2  # 읽을 레지스터 수
         self.client = ModbusClient(
             port=self.port,
             baudrate=int(self.baud),
