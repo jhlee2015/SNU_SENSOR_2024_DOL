@@ -30,15 +30,16 @@ class SUPMEA:
         self.slave_id = 1  # 슬레이브 ID
         self.address = 130  # 레지스터 시작 주소
         self.count = 8  # 읽을 레지스터 수
+        self.client = None
+
+    def readthread(self):  # 데이터 받는 함수
+        serial_logger.info("Kisan out ")
         self.client = minimalmodbus.Instrument(self.port, slaveaddress=1, mode='rtu')
         self.client.serial.baudrate = 9600
         self.client.serial.bytesize = 8
         self.client.serial.parity = serial.PARITY_NONE
         self.client.serial.stopbits = 1
         self.client.serial.timeout = 1
-
-    def readthread(self):  # 데이터 받는 함수
-        serial_logger.info("Kisan out ")
         value = 20000  # 20.000 mA
         try:
             while True:
