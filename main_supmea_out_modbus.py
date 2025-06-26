@@ -11,6 +11,7 @@ import minimalmodbus
 
 # 한기술에서 사용하는 압력센서 supmea, SUP-PX400
 from up_requests import apiRequestManager
+import serial
 
 
 class SUPMEA:
@@ -32,7 +33,7 @@ class SUPMEA:
         self.client = minimalmodbus.Instrument(self.port, slaveaddress=1, mode='rtu')
         self.client.serial.baudrate = 9600
         self.client.serial.bytesize = 8
-        self.client.serial.parity = self.client.serial.PARITY_NONE
+        self.client.serial.parity = serial.PARITY_NONE
         self.client.serial.stopbits = 1
         self.client.serial.timeout = 1
 
