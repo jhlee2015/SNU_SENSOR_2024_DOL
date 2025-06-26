@@ -87,15 +87,15 @@ class SUPMEA:
                     else:
                         # Little Endian flow 계산하기
                         regs = read_result.registers
-                        int_raw = struct.pack('<HH', regs[1], regs[0])
-                        int_val = struct.unpack('<f', int_raw)[0]
+                        int_val = (regs[1] << 16) | regs[0]
+                        print(f"UINT32 값: {int_val} (0x{int_val:08X})")
                         print(f"reverse flow 정수 값: {int_val}")
 
-                        dec_raw = struct.pack('<HH', regs[3], regs[2])
-                        dec_val = struct.unpack('<f', dec_raw)[0]
-                        print(f"reverse flow 소수 값: {dec_val / 1000}")
+                        dec_val = (regs[3] << 16) | regs[2]
+                        print(f"UINT32 값: {dec_val} (0x{dec_val:08X})")
+                        print(f"reverse flow 소수 값: {dec_val }")
 
-                        print(f"reverse flow 최종 값: {int_val + (val / 1000)}")
+                        print(f"reverse flow 최종 값: {int_val + (dec_val / 1000)}")
 
 
                     time.sleep(5)
