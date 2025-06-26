@@ -34,13 +34,17 @@ class SUPMEA:
 
     def readthread(self):  # 데이터 받는 함수
         serial_logger.info("Kisan out ")
+        serial_config = up_config_manager.ConfigManager().get_serial_config('AMA4')
+        sensor_id = up_config_manager.ConfigManager().get_sensor_id()
+        print(serial_config)
+        print(sensor_id)
         self.client = minimalmodbus.Instrument(self.port, slaveaddress=1, mode='rtu')
-        self.client.serial.baudrate = 9600
+        self.client.serial.baudrate = int(self.baud)
         self.client.serial.bytesize = 8
         self.client.serial.parity = serial.PARITY_NONE
         self.client.serial.stopbits = 1
         self.client.serial.timeout = 1
-        value = 20000  # 20.000 mA
+        value = 4000  # 20.000 mA
         try:
             while True:
                 # A 채널 (레지스터 0x0002) → 20,000 (20.000mA)
@@ -77,7 +81,7 @@ if __name__ == '__main__':
                     sup.read_thread.read_thread.daemon = True
                     sup.read_thread.read_thread.start()
                     serial_logger.info("thread restarted.")
-                time.sleep(60)
+                time.sleep(6)
 
         except Exception as E:
             serial_logger.info('main error' + str(E))
