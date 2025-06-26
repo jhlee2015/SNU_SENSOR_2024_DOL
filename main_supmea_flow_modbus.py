@@ -11,6 +11,9 @@ from pymodbus.client.serial import ModbusSerialClient as ModbusClient
 # 한기술에서 사용하는 압력센서 supmea, SUP-PX400
 from up_requests import apiRequestManager
 
+# Float으로 변환
+import struct
+
 import logging
 
 # pymodbus 로깅 레벨 설정
@@ -32,8 +35,6 @@ class SUPMEA:
         self.db = None
         self.apiManager = apiRequestManager()
         self.slave_id = 8  # 슬레이브 ID
-        self.address = 1000  # 레지스터 시작 주소
-        self.count = 2  # 읽을 레지스터 수
         self.client = ModbusClient(
             port=self.port,
             baudrate=int(self.baud),
@@ -50,22 +51,49 @@ class SUPMEA:
             try:
                 while True:
 
-                    serial_logger.info("Kisan Sensor Request2!")
-                    read_result = self.client.read_input_registers(address=self.address, count=self.count, slave=self.slave_id)
+                    serial_logger.info("instantaneous flow")
+                    read_result = self.client.read_input_registers(address=1000, count=2, slave=self.slave_id)
 
                     if read_result.isError():
                         print("read fail:", read_result)
                     else:
-                        values = read_result.registers
-                        print(f"[read success] address {self.address}, Count{self.count} : {values}")
-                        cal_val = (values[0] / 65535.0) * 20.0  # [0] 0채널
-                        print(f"{cal_val:.3f} mA")
-                        cal_val_bar = up_util.UTIL.current_to_bar(cal_val)
-
-                        res = self.apiManager.send_sensor_data("irrigation_sensor", "s001", "press", cal_val_bar)
-                        serial_logger.info(f"api request Test Start,{res}")
+                        # Little Endian flow 계산하기
+                        regs = read_result.registers
+                        raw = struct.pack('<HH', regs[1], regs[0])
+                        val = struct.unpack('<f', raw)[0]
+                        print(f"instantaneous flow 값: {val}")
 
                     #client.close()
+
+                    serial_logger.info("flow accumulation")
+                    read_result = self.client.read_input_registers(address=1002, count=4, slave=self.slave_id)
+
+                    if read_result.isError():
+                        print("read fail:", read_result)
+                    else:
+                        # Little Endian flow 계산하기
+                        regs = read_result.registers
+                        data = struct.pack('<HHHH', regs[1], regs[0], regs[3], regs[2])
+
+                        # 2. float64 (double)로 변환
+                        value = struct.unpack('<d', data)[0]
+                        print(f"flow double 값: {value}")
+
+                    serial_logger.info("reverse flow accumulation")
+                    read_result = self.client.read_input_registers(address=111, count=4, slave=self.slave_id)
+
+                    if read_result.isError():
+                        print("read fail:", read_result)
+                    else:
+                        # Little Endian flow 계산하기
+                        regs = read_result.registers
+                        data = struct.pack('<HHHH', regs[1], regs[0], regs[3], regs[2])
+
+                        # 2. float64 (double)로 변환
+                        value = struct.unpack('<d', data)[0]
+                        print(f"reverse flow double 값: {value}")
+
+
                     time.sleep(5)
             except KeyboardInterrupt:
                 print("중단됨 (Ctrl+C)")
