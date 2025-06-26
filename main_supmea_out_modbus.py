@@ -39,16 +39,16 @@ class SUPMEA:
 
     def readthread(self):  # 데이터 받는 함수
         serial_logger.info("Kisan out ")
+        value = 20000  # 20.000 mA
         try:
             while True:
                 # A 채널 (레지스터 0x0002) → 20,000 (20.000mA)
                 reg_addr = 0x0002
-                value = 20000  # 20.000 mA
                 self.client.write_register(reg_addr, value, functioncode=16)
                 print("A 채널에 20mA 설정 완료")
 
                 time.sleep(10)
-                value = value - 20000  # 20.000 mA
+                value = value - 2000  # 20.000 mA
                 print(value)
         finally:
             print("Modbus 연결 에러")
