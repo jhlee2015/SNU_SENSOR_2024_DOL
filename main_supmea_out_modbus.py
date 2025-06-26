@@ -47,7 +47,7 @@ class SUPMEA:
                 self.client.write_register(reg_addr, value, functioncode=16)
                 print("A 채널에 20mA 설정 완료")
 
-                time.sleep(10)
+                time.sleep(7)
                 value = value - 2000  # 20.000 mA
                 print(value)
         finally:
