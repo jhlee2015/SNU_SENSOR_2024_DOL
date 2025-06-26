@@ -67,6 +67,11 @@ class ConfigManager:
                 'port': self.config.get('serial_ama2', 'PORT'),
                 'baud': self.config.get('serial_ama2', 'BAUD')
             }
+        elif name == 'AMA4':
+            serial_config = {
+                'port': self.config.get('serial_ama2', 'PORT'),
+                'baud': self.config.get('serial_ama2', 'BAUD')
+            }
         elif name == 'TTY0':
             serial_config = {
                 'port': self.config.get('serial_usb0', 'PORT'),
