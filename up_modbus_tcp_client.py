@@ -59,7 +59,7 @@ class modbus_tcp_client :
             float_value = struct.unpack('>f', float_bytes)[0]
 
             print(f"✅ Read float value {float_value} from address {address}")
-            return float_value
+            return round(float_value, 2)
 
 if __name__ == '__main__':
     # Create Modbus TCP client
