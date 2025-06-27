@@ -61,7 +61,8 @@ class SUPMEA:
                         cal_val_bar = up_util.UTIL.current_to_bar(cal_val)
 
                         #res = self.apiManager.send_sensor_data("irrigation_sensor", "s001", "press", cal_val_bar)
-                        mclient.modbus_tcp_client.write_modbus_float(self.tcp_client, 1, cal_val_bar)
+                        mclient.modbus_tcp_client.write_modbus_float(self.tcp_client, 1, cal_val)
+
 
                     #client.close()
                     time.sleep(5)
