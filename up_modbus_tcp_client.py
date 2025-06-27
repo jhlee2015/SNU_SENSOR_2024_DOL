@@ -56,10 +56,10 @@ class modbus_tcp_client :
 
             # 레지스터 → float (big-endian 기준)
             float_bytes = struct.pack('>HH', high, low)
-            float_value = struct.unpack('>f', float_bytes)[0]
+            float_value = round(struct.unpack('>f', float_bytes)[0],2)
 
             print(f"✅ Read float value {float_value} from address {address}")
-            return round(float_value, 2)
+            return float_value
 
 if __name__ == '__main__':
     # Create Modbus TCP client
