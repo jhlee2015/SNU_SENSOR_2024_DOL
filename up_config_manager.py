@@ -105,8 +105,8 @@ class ConfigManager:
         return url
 
     def get_modbus_server(self):
-        url = {
+        modbus_server = {
             'host': self.config.get('modbus_server', 'HOST'),
             'port': self.config.get('modbus_server', 'PORT'),
         }
-        return url
+        return modbus_server

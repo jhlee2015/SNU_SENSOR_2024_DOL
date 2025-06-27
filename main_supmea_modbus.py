@@ -18,7 +18,7 @@ class SUPMEA:
 
     def __init__(self):
         serial_config = up_config_manager.ConfigManager().get_serial_config('AMA2')
-        tcp_modbus_config = up_config_manager.ConfigManager().get_modbus_server('modbus_server')
+        tcp_modbus_config = up_config_manager.ConfigManager().get_modbus_server()
         sensor_id = up_config_manager.ConfigManager().get_sensor_id()
         print(serial_config)
         print(sensor_id)
