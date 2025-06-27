@@ -65,7 +65,7 @@ class SUPMEA:
 
 
                     #client.close()
-                    time.sleep(5)
+                    time.sleep(10)
             except KeyboardInterrupt:
                 serial_logger.info("중단됨 (Ctrl+C)")
             finally:
