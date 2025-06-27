@@ -55,25 +55,25 @@ class SUPMEA:
                         print("read fail:", read_result)
                     else:
                         values = read_result.registers
-                        print(f"[read success] address {self.address}, Count{self.count} : {values}")
+                        serial_logger.info(f"[read success] address {self.address}, Count{self.count} : {values}")
                         cal_val = (values[0] / 65535.0) * 20.0  # [0] 0채널
-                        print(f"{cal_val:.3f} mA")
+                        serial_logger.info(f"{cal_val:.3f} mA")
                         cal_val_bar = up_util.UTIL.current_to_bar(cal_val)
 
                         #res = self.apiManager.send_sensor_data("irrigation_sensor", "s001", "press", cal_val_bar)
-                        mclient.modbus_tcp_client.write_modbus_float(self.tcp_client, 1, round(cal_val, 2))
+                        mclient.modbus_tcp_client.write_modbus_float(serial_logger, self.tcp_client, 1, round(cal_val, 2))
 
 
                     #client.close()
                     time.sleep(5)
             except KeyboardInterrupt:
-                print("중단됨 (Ctrl+C)")
+                serial_logger.info("중단됨 (Ctrl+C)")
             finally:
                 self.client.close()
-                print("Modbus 연결 종료됨.")
+                serial_logger.info("Modbus 연결 종료됨.")
         else:
             self.client.close()
-            print("Modbus connected fail")
+            serial_logger.info("Modbus connected fail")
 
 
 

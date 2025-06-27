@@ -8,27 +8,27 @@ class modbus_tcp_client :
 
     # Modbus address to read
     @staticmethod
-    def read_modbus_word(client, address, count):
+    def read_modbus_word(log, client, address, count):
         # Read holding registers (function code 3)
         response = client.read_holding_registers(address, count, unit=1)
         if response.isError():
-            print(f"Error reading address {address}")
+            log.info(f"Error reading address {address}")
         else:
             # modbus 데이터 10개 출력
-            for i in range(10):
-                print(f"Value at address {address}: {response.registers[i]}")
+            for i in range(count):
+                log.info(f"Value at address {address}: {response.registers[i]}")
 
     @staticmethod
-    def write_modbus_word(client, address, value):
+    def write_modbus_word(log, client, address, value):
         # Holding Register에 단일 값 쓰기 (function code 6)
         response = client.write_register(address, value, unit=1)
         if response.isError():
-            print(f"❌ Failed to write value at address {address}")
+            log.info(f"❌ Failed to write value at address {address}")
         else:
-            print(f"✅ Wrote value {value} to address {address}")
+            log.info(f"✅ Wrote value {value} to address {address}")
 
     @staticmethod
-    def write_modbus_float(client, address, float_value):
+    def write_modbus_float(log, client, address, float_value):
         # float → 4바이트 → 2개의 16비트 unsigned short로 변환
         float_bytes = struct.pack('>f', float_value)  # big-endian float
         high, low = struct.unpack('>HH', float_bytes)  # high = addr, low = addr+1
@@ -37,28 +37,28 @@ class modbus_tcp_client :
         response = client.write_registers(address, [high, low], unit=1)
 
         if response.isError():
-            print(f"❌ Failed to write float at address {address}")
+            log.info(f"❌ Failed to write float at address {address}")
         else:
-            print(f"✅ Wrote float value {float_value} to address {address} ({[high, low]})")
+            log.info(f"✅ Wrote float value {float_value} to address {address} ({[high, low]})")
 
     @staticmethod
-    def read_modbus_float(client, address):
+    def read_modbus_float(log, client, address):
         # 2개의 연속된 Holding Register 읽기 (32비트 float)
         response = client.read_holding_registers(address=address, count=2, unit=1)
 
         if response.isError():
-            print(f"❌ Failed to read float at address {address}")
+            log.info(f"❌ Failed to read float at address {address}")
             return None
         else:
             registers = response.registers
             high, low = registers[0], registers[1]
-            print(f"📥 Raw registers: {registers}")
+            log.info(f"📥 Raw registers: {registers}")
 
             # 레지스터 → float (big-endian 기준)
             float_bytes = struct.pack('>HH', high, low)
             float_value = round(struct.unpack('>f', float_bytes)[0],2)
 
-            print(f"✅ Read float value {float_value} from address {address}")
+            log.info(f"✅ Read float value {float_value} from address {address}")
             return float_value
 
 if __name__ == '__main__':
@@ -78,7 +78,7 @@ if __name__ == '__main__':
 
         # time.sleep(1)
 
-        read_modbus_word(client, 0)
+        # read_modbus_word(client, 0)
 
         # Close the connection
         client.close()
