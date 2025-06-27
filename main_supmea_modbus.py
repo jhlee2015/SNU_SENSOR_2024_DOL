@@ -6,7 +6,9 @@ from datetime import datetime
 import up_util
 import up_logger_manager
 import up_config_manager
+import up_modbus_tcp_client as mclient
 from pymodbus.client.serial import ModbusSerialClient as ModbusClient
+from pymodbus.client import ModbusTcpClient
 
 # 한기술에서 사용하는 압력센서 supmea, SUP-PX400
 from up_requests import apiRequestManager
@@ -15,12 +17,15 @@ from up_requests import apiRequestManager
 class SUPMEA:
 
     def __init__(self):
-        serial_config = up_config_manager.ConfigManager().get_serial_config('TTY0')
+        serial_config = up_config_manager.ConfigManager().get_serial_config('AMA2')
+        tcp_modbus_config = up_config_manager.ConfigManager().get_modbus_server('modbus_server')
         sensor_id = up_config_manager.ConfigManager().get_sensor_id()
         print(serial_config)
         print(sensor_id)
         self.port = serial_config['port']
         self.baud = serial_config['baud']
+        self.modbus_host = tcp_modbus_config['host']
+        self.modbus_port = tcp_modbus_config['port']
         self.sensor_id = sensor_id['id']
         self.read_thread = None
         self.db = None
@@ -36,15 +41,14 @@ class SUPMEA:
             bytesize=8,
             timeout=1
         )
+        self.tcp_client = ModbusTcpClient(self.modbus_host, port=self.modbus_port)
 
     def readthread(self):  # 데이터 받는 함수
 
-        serial_logger.info("Kisan Sensor Request1!")
         if self.client.connect():
             try:
                 while True:
-
-                    serial_logger.info("Kisan Sensor Request2!")
+                    serial_logger.info("Kisan Sensor Request!")
                     read_result = self.client.read_input_registers(address=self.address, count=self.count, slave=self.slave_id)
 
                     if read_result.isError():
@@ -56,8 +60,8 @@ class SUPMEA:
                         print(f"{cal_val:.3f} mA")
                         cal_val_bar = up_util.UTIL.current_to_bar(cal_val)
 
-                        res = self.apiManager.send_sensor_data("irrigation_sensor", "s001", "press", cal_val_bar)
-                        serial_logger.info(f"api request Test Start,{res}")
+                        #res = self.apiManager.send_sensor_data("irrigation_sensor", "s001", "press", cal_val_bar)
+                        mclient.modbus_tcp_client.write_modbus_float(self.tcp_client, 1, cal_val_bar)
 
                     #client.close()
                     time.sleep(5)
