@@ -31,6 +31,7 @@ class SUPMEA:
         self.address = 130  # 레지스터 시작 주소
         self.count = 8  # 읽을 레지스터 수
         self.client = None
+        
 
     def readthread(self):  # 데이터 받는 함수
         serial_logger.info("Kisan out ")
