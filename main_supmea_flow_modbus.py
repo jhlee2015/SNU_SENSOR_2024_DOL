@@ -34,7 +34,7 @@ class SUPMEA:
         self.read_thread = None
         self.db = None
         self.apiManager = apiRequestManager()
-        self.slave_id = 8  # 슬레이브 ID
+        self.slave_id = 2  # 슬레이브 ID
         self.client = ModbusClient(
             port=self.port,
             baudrate=int(self.baud),
