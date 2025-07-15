@@ -59,7 +59,7 @@ class SUPMEA:
                     else:
                         # Little Endian flow 계산하기
                         regs = read_result.registers
-                        raw = struct.pack('<HH', regs[1], regs[0])
+                        raw = struct.pack('<HH', regs[0], regs[1])
                         val = struct.unpack('<f', raw)[0]
                         print(f"instantaneous flow 값: {val}")
 
@@ -73,7 +73,7 @@ class SUPMEA:
                     else:
                         # Little Endian flow 계산하기
                         regs = read_result.registers
-                        data = struct.pack('<HHHH', regs[1], regs[0], regs[3], regs[2])
+                        data = struct.pack('<HHHH', regs[0], regs[1], regs[2], regs[3])
 
                         # 2. float64 (double)로 변환
                         value = struct.unpack('<d', data)[0]
@@ -87,11 +87,11 @@ class SUPMEA:
                     else:
                         # Little Endian flow 계산하기
                         regs = read_result.registers
-                        int_val = (regs[1] << 16) | regs[0]
+                        int_val = (regs[0] << 16) | regs[1]
                         print(f"UINT32 값: {int_val} (0x{int_val:08X})")
                         print(f"reverse flow 정수 값: {int_val}")
 
-                        dec_val = (regs[3] << 16) | regs[2]
+                        dec_val = (regs[2] << 16) | regs[3]
                         print(f"UINT32 값: {dec_val} (0x{dec_val:08X})")
                         print(f"reverse flow 소수 값: {dec_val }")
 
