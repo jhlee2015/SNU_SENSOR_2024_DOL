@@ -1,0 +1,550 @@
+2025-07-16 22:21:33,849 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:21:33,856 - serial - INFO - main Alive!! 
+2025-07-16 22:21:33,857 - serial - INFO - Modbus connected fail
+2025-07-16 22:24:03,599 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:24:03,602 - serial - INFO - main Alive!! 
+2025-07-16 22:24:03,620 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:24:05,760 - serial - INFO - Modbus ¿¬°á Á¾·áµÊ.
+2025-07-16 22:24:59,146 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:24:59,150 - serial - INFO - main Alive!! 
+2025-07-16 22:24:59,168 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:25:11,328 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:25:23,533 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:25:35,712 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:25:47,901 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:25:59,164 - serial - INFO - main Alive!! 
+2025-07-16 22:26:00,100 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:26:12,292 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:26:24,471 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:26:36,657 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:26:48,865 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:26:59,222 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:26:59,225 - serial - INFO - main Alive!! 
+2025-07-16 22:26:59,243 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:27:11,398 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:27:23,601 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:27:35,797 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:27:47,998 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:27:59,229 - serial - INFO - main Alive!! 
+2025-07-16 22:28:00,196 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:28:12,365 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:28:24,546 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:28:36,728 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:28:48,903 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:28:59,237 - serial - INFO - main Alive!! 
+2025-07-16 22:29:01,090 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:29:13,299 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:29:25,506 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:29:28,812 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:29:28,816 - serial - INFO - main Alive!! 
+2025-07-16 22:29:28,849 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:29:30,995 - serial - INFO - Wrote float value 456.12 to address 1 ([17380, 3932])
+2025-07-16 22:29:40,999 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:29:43,160 - serial - INFO - Wrote float value 456.12 to address 1 ([17380, 3932])
+2025-07-16 22:29:45,739 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:29:45,742 - serial - INFO - main Alive!! 
+2025-07-16 22:29:45,759 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:29:47,918 - serial - INFO - Wrote float value 456.12 to address 3 ([17380, 3932])
+2025-07-16 22:29:57,925 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:30:00,100 - serial - INFO - Wrote float value 456.12 to address 3 ([17380, 3932])
+2025-07-16 22:30:10,112 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:30:12,287 - serial - INFO - Wrote float value 456.12 to address 3 ([17380, 3932])
+2025-07-16 22:30:22,288 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:30:24,461 - serial - INFO - Wrote float value 456.12 to address 3 ([17380, 3932])
+2025-07-16 22:30:34,474 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:30:36,671 - serial - INFO - Wrote float value 456.12 to address 3 ([17380, 3932])
+2025-07-16 22:30:45,742 - serial - INFO - main Alive!! 
+2025-07-16 22:30:46,673 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:30:48,860 - serial - INFO - Wrote float value 456.12 to address 3 ([17380, 3932])
+2025-07-16 22:30:58,869 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:31:01,039 - serial - INFO - Wrote float value 456.12 to address 3 ([17380, 3932])
+2025-07-16 22:31:11,051 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:31:13,227 - serial - INFO - Wrote float value 456.12 to address 3 ([17380, 3932])
+2025-07-16 22:31:23,230 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:31:25,421 - serial - INFO - Wrote float value 456.12 to address 3 ([17380, 3932])
+2025-07-16 22:31:35,427 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:31:37,618 - serial - INFO - Wrote float value 456.12 to address 3 ([17380, 3932])
+2025-07-16 22:31:42,993 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:31:42,996 - serial - INFO - main Alive!! 
+2025-07-16 22:31:43,029 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:31:45,183 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:31:55,191 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:31:57,358 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:32:07,361 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:32:09,535 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:32:19,540 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:32:21,720 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:32:31,727 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:32:33,908 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:32:43,006 - serial - INFO - main Alive!! 
+2025-07-16 22:32:43,919 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:32:46,097 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:32:56,102 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:32:58,283 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:33:08,297 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:33:10,477 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:33:20,491 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:33:22,664 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:33:32,675 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:33:34,857 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:33:43,014 - serial - INFO - main Alive!! 
+2025-07-16 22:33:44,862 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:33:47,036 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:33:57,048 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:33:59,237 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:34:09,252 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:34:11,422 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:34:21,431 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:34:23,606 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:34:33,615 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:34:35,798 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:34:43,019 - serial - INFO - main Alive!! 
+2025-07-16 22:34:45,812 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:34:47,964 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:34:57,973 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:35:00,151 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:35:10,161 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:35:12,332 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:35:22,333 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:35:24,486 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:35:34,489 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:35:36,661 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:35:43,033 - serial - INFO - main Alive!! 
+2025-07-16 22:35:46,664 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:35:48,856 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:35:58,870 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:36:01,060 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:36:11,070 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:36:13,242 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:36:23,246 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:36:25,423 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:36:35,425 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:36:37,615 - serial - INFO - Wrote float value 123.46 to address 1 ([17142, 60293])
+2025-07-16 22:36:43,041 - serial - INFO - main Alive!! 
+2025-07-16 22:36:47,629 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:36:50,874 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:36:50,878 - serial - INFO - main Alive!! 
+2025-07-16 22:36:50,895 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:36:53,057 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:37:03,062 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:37:05,224 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:37:15,233 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:37:17,404 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:37:27,413 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:37:29,610 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:37:39,623 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:37:41,799 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:37:50,882 - serial - INFO - main Alive!! 
+2025-07-16 22:37:51,801 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:37:53,958 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:38:03,959 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:38:06,134 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:38:16,150 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:38:18,337 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:38:28,343 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:38:30,511 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:45:59,891 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:45:59,894 - serial - INFO - main Alive!! 
+2025-07-16 22:45:59,912 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:46:09,473 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:46:09,476 - serial - INFO - main Alive!! 
+2025-07-16 22:46:09,494 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:46:14,638 - serial - INFO - Modbus ¿¬°á Á¾·áµÊ.
+2025-07-16 22:46:32,219 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:46:32,222 - serial - INFO - main Alive!! 
+2025-07-16 22:46:32,239 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:46:37,389 - serial - INFO - Modbus ¿¬°á Á¾·áµÊ.
+2025-07-16 22:47:32,225 - serial - INFO - main Alive!! 
+2025-07-16 22:47:32,226 - serial - WARNING - thread dead! restarting...
+2025-07-16 22:47:32,227 - serial - INFO - main error'NoneType' object has no attribute 'read_thread'
+2025-07-16 22:47:32,228 - serial - INFO - serial close ok
+2025-07-16 22:47:42,237 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:47:42,239 - serial - INFO - main Alive!! 
+2025-07-16 22:47:42,258 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:47:44,418 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:47:45,582 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:47:45,584 - serial - INFO - main Alive!! 
+2025-07-16 22:47:45,601 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:47:47,777 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:47:51,599 - serial - INFO - main Alive!! 
+2025-07-16 22:47:52,782 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:47:54,991 - serial - INFO - Failed to write double value 987.65 to address 5
+2025-07-16 22:47:57,606 - serial - INFO - main Alive!! 
+2025-07-16 22:48:00,000 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:48:03,606 - serial - INFO - main Alive!! 
+2025-07-16 22:48:05,193 - serial - INFO - Modbus ¿¬°á Á¾·áµÊ.
+2025-07-16 22:48:09,611 - serial - INFO - main Alive!! 
+2025-07-16 22:48:09,611 - serial - WARNING - thread dead! restarting...
+2025-07-16 22:48:09,612 - serial - INFO - main error'NoneType' object has no attribute 'read_thread'
+2025-07-16 22:48:09,612 - serial - INFO - serial close ok
+2025-07-16 22:48:15,612 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:48:15,614 - serial - INFO - main Alive!! 
+2025-07-16 22:48:15,652 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:48:17,811 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:48:21,617 - serial - INFO - main Alive!! 
+2025-07-16 22:48:22,811 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:48:24,991 - serial - INFO - Failed to write double value 987.65 to address 5
+2025-07-16 22:48:27,630 - serial - INFO - main Alive!! 
+2025-07-16 22:48:30,001 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:48:33,636 - serial - INFO - main Alive!! 
+2025-07-16 22:48:34,175 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:48:39,181 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:48:39,182 - serial - INFO - Modbus ¿¬°á Á¾·áµÊ.
+2025-07-16 22:48:39,650 - serial - INFO - main Alive!! 
+2025-07-16 22:48:39,650 - serial - WARNING - thread dead! restarting...
+2025-07-16 22:48:39,650 - serial - INFO - main error'NoneType' object has no attribute 'read_thread'
+2025-07-16 22:48:39,651 - serial - INFO - serial close ok
+2025-07-16 22:48:45,656 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:48:45,657 - serial - INFO - main Alive!! 
+2025-07-16 22:48:45,657 - serial - INFO - Modbus connected fail
+2025-07-16 22:48:51,657 - serial - INFO - main Alive!! 
+2025-07-16 22:48:51,657 - serial - WARNING - thread dead! restarting...
+2025-07-16 22:48:51,658 - serial - INFO - main error'NoneType' object has no attribute 'read_thread'
+2025-07-16 22:48:51,658 - serial - INFO - serial close ok
+2025-07-16 22:48:57,659 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:48:57,661 - serial - INFO - Modbus connected fail
+2025-07-16 22:48:57,661 - serial - INFO - main Alive!! 
+2025-07-16 22:48:57,662 - serial - WARNING - thread dead! restarting...
+2025-07-16 22:48:57,662 - serial - INFO - main error'NoneType' object has no attribute 'read_thread'
+2025-07-16 22:48:57,662 - serial - INFO - serial close ok
+2025-07-16 22:49:03,665 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:49:03,665 - serial - INFO - main Alive!! 
+2025-07-16 22:49:07,341 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:49:09,501 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:49:09,677 - serial - INFO - main Alive!! 
+2025-07-16 22:49:14,505 - serial - INFO - Kisan Sensor Request!
+2025-07-16 22:49:15,685 - serial - INFO - main Alive!! 
+2025-07-16 22:49:16,686 - serial - INFO - Wrote double value 987.65 to address 5 ([16526, 56627, 13107, 13107])
+2025-07-16 22:58:08,740 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:58:08,743 - serial - INFO - main Alive!! 
+2025-07-16 22:58:08,743 - serial - INFO - Modbus connected fail
+2025-07-16 22:58:14,757 - serial - INFO - main Alive!! 
+2025-07-16 22:58:14,757 - serial - WARNING - thread dead! restarting...
+2025-07-16 22:58:14,757 - serial - INFO - main error'NoneType' object has no attribute 'read_thread'
+2025-07-16 22:58:14,757 - serial - INFO - serial close ok
+2025-07-16 22:58:20,761 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:58:20,761 - serial - INFO - main Alive!! 
+2025-07-16 22:58:20,762 - serial - INFO - Modbus connected fail
+2025-07-16 22:58:29,777 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 22:58:29,779 - serial - INFO - Kisan out 
+2025-07-16 22:58:29,780 - serial - INFO - main Alive!! 
+2025-07-16 22:58:29,840 - serial - INFO - Wrote value 2 to address 5
+2025-07-16 23:00:46,752 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:00:46,754 - serial - INFO - Kisan out 
+2025-07-16 23:00:46,754 - serial - INFO - main Alive!! 
+2025-07-16 23:00:46,792 - serial - INFO - Wrote value 2 to address 1
+2025-07-16 23:00:52,764 - serial - INFO - main Alive!! 
+2025-07-16 23:00:52,764 - serial - WARNING - thread dead! restarting...
+2025-07-16 23:00:52,765 - serial - INFO - main error'NoneType' object has no attribute 'read_thread'
+2025-07-16 23:01:17,705 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:01:17,707 - serial - INFO - Kisan out 
+2025-07-16 23:01:17,708 - serial - INFO - main Alive!! 
+2025-07-16 23:01:17,733 - serial - INFO - Wrote value 2 to address 1
+2025-07-16 23:01:23,716 - serial - INFO - main Alive!! 
+2025-07-16 23:01:29,985 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:01:29,987 - serial - INFO - Kisan out 
+2025-07-16 23:01:29,988 - serial - INFO - main Alive!! 
+2025-07-16 23:01:30,028 - serial - INFO - Value at address 1: 2
+2025-07-16 23:01:30,029 - serial - INFO - Value at address 1: 0
+2025-07-16 23:01:35,989 - serial - INFO - main Alive!! 
+2025-07-16 23:01:42,003 - serial - INFO - main Alive!! 
+2025-07-16 23:01:42,004 - serial - WARNING - thread dead! restarting...
+2025-07-16 23:01:42,005 - serial - INFO - main error'NoneType' object has no attribute 'read_thread'
+2025-07-16 23:01:52,008 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:01:52,009 - serial - INFO - Kisan out 
+2025-07-16 23:01:52,009 - serial - INFO - main Alive!! 
+2025-07-16 23:01:52,042 - serial - INFO - Value at address 1: 2
+2025-07-16 23:01:52,042 - serial - INFO - Value at address 1: 0
+2025-07-16 23:01:58,018 - serial - INFO - main Alive!! 
+2025-07-16 23:02:04,025 - serial - INFO - main Alive!! 
+2025-07-16 23:02:04,025 - serial - WARNING - thread dead! restarting...
+2025-07-16 23:02:04,025 - serial - INFO - main error'NoneType' object has no attribute 'read_thread'
+2025-07-16 23:02:14,991 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:02:14,995 - serial - INFO - Kisan out 
+2025-07-16 23:02:14,996 - serial - INFO - main Alive!! 
+2025-07-16 23:02:15,021 - serial - INFO - Value at address 1: 2
+2025-07-16 23:02:15,021 - serial - INFO - Value at address 1: 0
+2025-07-16 23:02:21,005 - serial - INFO - main Alive!! 
+2025-07-16 23:02:22,035 - serial - INFO - Value at address 1: 2
+2025-07-16 23:02:22,035 - serial - INFO - Value at address 1: 0
+2025-07-16 23:02:27,009 - serial - INFO - main Alive!! 
+2025-07-16 23:02:29,051 - serial - INFO - Value at address 1: 2
+2025-07-16 23:02:29,051 - serial - INFO - Value at address 1: 0
+2025-07-16 23:02:33,016 - serial - INFO - main Alive!! 
+2025-07-16 23:02:36,067 - serial - INFO - Value at address 1: 2
+2025-07-16 23:02:36,067 - serial - INFO - Value at address 1: 0
+2025-07-16 23:02:39,020 - serial - INFO - main Alive!! 
+2025-07-16 23:02:43,078 - serial - INFO - Value at address 1: 2
+2025-07-16 23:02:43,078 - serial - INFO - Value at address 1: 0
+2025-07-16 23:02:45,022 - serial - INFO - main Alive!! 
+2025-07-16 23:02:50,087 - serial - INFO - Value at address 1: 2
+2025-07-16 23:02:50,087 - serial - INFO - Value at address 1: 0
+2025-07-16 23:02:51,036 - serial - INFO - main Alive!! 
+2025-07-16 23:02:57,040 - serial - INFO - main Alive!! 
+2025-07-16 23:02:57,104 - serial - INFO - Value at address 1: 2
+2025-07-16 23:02:57,104 - serial - INFO - Value at address 1: 0
+2025-07-16 23:03:03,047 - serial - INFO - main Alive!! 
+2025-07-16 23:03:04,122 - serial - INFO - Value at address 1: 2
+2025-07-16 23:03:04,122 - serial - INFO - Value at address 1: 0
+2025-07-16 23:03:09,061 - serial - INFO - main Alive!! 
+2025-07-16 23:03:11,133 - serial - INFO - Value at address 1: 2
+2025-07-16 23:03:11,134 - serial - INFO - Value at address 1: 0
+2025-07-16 23:03:15,070 - serial - INFO - main Alive!! 
+2025-07-16 23:03:18,147 - serial - INFO - Value at address 1: 2
+2025-07-16 23:03:18,147 - serial - INFO - Value at address 1: 0
+2025-07-16 23:03:21,074 - serial - INFO - main Alive!! 
+2025-07-16 23:03:25,154 - serial - INFO - Value at address 1: 2
+2025-07-16 23:03:25,155 - serial - INFO - Value at address 1: 0
+2025-07-16 23:03:27,088 - serial - INFO - main Alive!! 
+2025-07-16 23:03:32,171 - serial - INFO - Value at address 1: 2
+2025-07-16 23:03:32,171 - serial - INFO - Value at address 1: 0
+2025-07-16 23:03:33,094 - serial - INFO - main Alive!! 
+2025-07-16 23:03:39,108 - serial - INFO - main Alive!! 
+2025-07-16 23:03:39,186 - serial - INFO - Value at address 1: 2
+2025-07-16 23:03:39,186 - serial - INFO - Value at address 1: 0
+2025-07-16 23:03:45,121 - serial - INFO - main Alive!! 
+2025-07-16 23:03:46,204 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:03:46,204 - serial - INFO - Value at address 1: 0
+2025-07-16 23:03:51,123 - serial - INFO - main Alive!! 
+2025-07-16 23:03:53,216 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:03:53,216 - serial - INFO - Value at address 1: 0
+2025-07-16 23:03:57,132 - serial - INFO - main Alive!! 
+2025-07-16 23:04:00,231 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:04:00,232 - serial - INFO - Value at address 1: 0
+2025-07-16 23:04:03,142 - serial - INFO - main Alive!! 
+2025-07-16 23:04:07,245 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:04:07,245 - serial - INFO - Value at address 1: 0
+2025-07-16 23:04:09,150 - serial - INFO - main Alive!! 
+2025-07-16 23:04:14,253 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:04:14,253 - serial - INFO - Value at address 1: 0
+2025-07-16 23:04:15,156 - serial - INFO - main Alive!! 
+2025-07-16 23:04:21,164 - serial - INFO - main Alive!! 
+2025-07-16 23:04:21,269 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:04:21,269 - serial - INFO - Value at address 1: 0
+2025-07-16 23:04:27,172 - serial - INFO - main Alive!! 
+2025-07-16 23:04:28,285 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:04:28,285 - serial - INFO - Value at address 1: 0
+2025-07-16 23:04:33,175 - serial - INFO - main Alive!! 
+2025-07-16 23:04:35,299 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:04:35,299 - serial - INFO - Value at address 1: 0
+2025-07-16 23:04:39,187 - serial - INFO - main Alive!! 
+2025-07-16 23:04:42,311 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:04:42,311 - serial - INFO - Value at address 1: 0
+2025-07-16 23:04:45,198 - serial - INFO - main Alive!! 
+2025-07-16 23:04:49,316 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:04:49,317 - serial - INFO - Value at address 1: 0
+2025-07-16 23:04:51,212 - serial - INFO - main Alive!! 
+2025-07-16 23:04:56,321 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:04:56,321 - serial - INFO - Value at address 1: 0
+2025-07-16 23:04:57,225 - serial - INFO - main Alive!! 
+2025-07-16 23:05:03,230 - serial - INFO - main Alive!! 
+2025-07-16 23:05:03,340 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:05:03,340 - serial - INFO - Value at address 1: 0
+2025-07-16 23:05:09,238 - serial - INFO - main Alive!! 
+2025-07-16 23:05:10,354 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:05:10,354 - serial - INFO - Value at address 1: 0
+2025-07-16 23:05:15,247 - serial - INFO - main Alive!! 
+2025-07-16 23:05:17,371 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:05:17,371 - serial - INFO - Value at address 1: 0
+2025-07-16 23:05:21,251 - serial - INFO - main Alive!! 
+2025-07-16 23:05:24,376 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:05:24,376 - serial - INFO - Value at address 1: 0
+2025-07-16 23:05:27,260 - serial - INFO - main Alive!! 
+2025-07-16 23:05:31,396 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:05:31,396 - serial - INFO - Value at address 1: 0
+2025-07-16 23:05:33,263 - serial - INFO - main Alive!! 
+2025-07-16 23:05:38,402 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:05:38,402 - serial - INFO - Value at address 1: 0
+2025-07-16 23:05:39,271 - serial - INFO - main Alive!! 
+2025-07-16 23:05:45,275 - serial - INFO - main Alive!! 
+2025-07-16 23:05:45,411 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:05:45,411 - serial - INFO - Value at address 1: 0
+2025-07-16 23:05:51,281 - serial - INFO - main Alive!! 
+2025-07-16 23:05:52,428 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:05:52,428 - serial - INFO - Value at address 1: 0
+2025-07-16 23:05:57,289 - serial - INFO - main Alive!! 
+2025-07-16 23:05:59,443 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:05:59,443 - serial - INFO - Value at address 1: 0
+2025-07-16 23:06:03,297 - serial - INFO - main Alive!! 
+2025-07-16 23:06:06,449 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:06:06,449 - serial - INFO - Value at address 1: 0
+2025-07-16 23:06:09,311 - serial - INFO - main Alive!! 
+2025-07-16 23:06:13,464 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:06:13,465 - serial - INFO - Value at address 1: 0
+2025-07-16 23:06:15,323 - serial - INFO - main Alive!! 
+2025-07-16 23:06:20,475 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:06:20,475 - serial - INFO - Value at address 1: 0
+2025-07-16 23:06:21,331 - serial - INFO - main Alive!! 
+2025-07-16 23:06:27,341 - serial - INFO - main Alive!! 
+2025-07-16 23:06:27,481 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:06:27,481 - serial - INFO - Value at address 1: 0
+2025-07-16 23:06:33,344 - serial - INFO - main Alive!! 
+2025-07-16 23:06:34,497 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:06:34,497 - serial - INFO - Value at address 1: 0
+2025-07-16 23:06:39,355 - serial - INFO - main Alive!! 
+2025-07-16 23:06:41,509 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:06:41,509 - serial - INFO - Value at address 1: 0
+2025-07-16 23:06:45,358 - serial - INFO - main Alive!! 
+2025-07-16 23:06:48,526 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:06:48,526 - serial - INFO - Value at address 1: 0
+2025-07-16 23:06:51,362 - serial - INFO - main Alive!! 
+2025-07-16 23:06:55,542 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:06:55,542 - serial - INFO - Value at address 1: 0
+2025-07-16 23:06:57,374 - serial - INFO - main Alive!! 
+2025-07-16 23:07:02,550 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:07:02,550 - serial - INFO - Value at address 1: 0
+2025-07-16 23:07:03,388 - serial - INFO - main Alive!! 
+2025-07-16 23:07:07,087 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:07:07,090 - serial - INFO - Kisan out 
+2025-07-16 23:07:07,091 - serial - INFO - main Alive!! 
+2025-07-16 23:07:13,095 - serial - INFO - main Alive!! 
+2025-07-16 23:07:13,095 - serial - WARNING - thread dead! restarting...
+2025-07-16 23:07:13,095 - serial - INFO - main error'NoneType' object has no attribute 'read_thread'
+2025-07-16 23:07:23,104 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:07:23,105 - serial - INFO - Kisan out 
+2025-07-16 23:07:23,105 - serial - INFO - main Alive!! 
+2025-07-16 23:07:25,519 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:07:25,522 - serial - INFO - Kisan out 
+2025-07-16 23:07:25,523 - serial - INFO - main Alive!! 
+2025-07-16 23:07:25,548 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:07:25,548 - serial - INFO - Value at address 2: 0
+2025-07-16 23:07:40,113 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:07:40,116 - serial - INFO - Kisan out 
+2025-07-16 23:07:40,116 - serial - INFO - main Alive!! 
+2025-07-16 23:07:40,139 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:07:40,139 - serial - INFO - Value at address 2: 0
+2025-07-16 23:07:54,995 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:07:54,997 - serial - INFO - Kisan out 
+2025-07-16 23:07:54,997 - serial - INFO - main Alive!! 
+2025-07-16 23:07:55,035 - serial - INFO - Value at address 1: 1234
+2025-07-16 23:07:55,036 - serial - INFO - Value at address 2: 0
+2025-07-16 23:11:31,058 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:11:31,060 - serial - INFO - Kisan out 
+2025-07-16 23:11:31,060 - serial - INFO - main Alive!! 
+2025-07-16 23:11:31,085 - serial - INFO - 32-bit int at addresses 1-2: 1234
+2025-07-16 23:13:07,147 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:13:07,149 - serial - INFO - main Alive!! 
+2025-07-16 23:13:07,149 - serial - INFO - Modbus connected fail
+2025-07-16 23:13:13,151 - serial - INFO - main Alive!! 
+2025-07-16 23:13:13,152 - serial - WARNING - thread dead! restarting...
+2025-07-16 23:13:13,154 - serial - INFO - main error'NoneType' object has no attribute 'read_thread'
+2025-07-16 23:13:13,155 - serial - INFO - serial close ok
+2025-07-16 23:13:19,166 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:13:19,166 - serial - INFO - main Alive!! 
+2025-07-16 23:13:19,167 - serial - INFO - Modbus connected fail
+2025-07-16 23:13:25,180 - serial - INFO - main Alive!! 
+2025-07-16 23:13:25,180 - serial - WARNING - thread dead! restarting...
+2025-07-16 23:13:25,183 - serial - INFO - main error'NoneType' object has no attribute 'read_thread'
+2025-07-16 23:13:25,183 - serial - INFO - serial close ok
+2025-07-16 23:13:37,713 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:13:37,716 - serial - INFO - main Alive!! 
+2025-07-16 23:13:37,733 - serial - INFO - Kisan Sensor Request!
+2025-07-16 23:13:39,892 - serial - INFO - Wrote float value 123.45 to address 1 ([17142, 58982])
+2025-07-16 23:13:48,343 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:13:48,345 - serial - INFO - Kisan out 
+2025-07-16 23:13:48,345 - serial - INFO - main Alive!! 
+2025-07-16 23:13:48,371 - serial - INFO - 32-bit int at addresses 1-2: 3865461494
+2025-07-16 23:13:54,349 - serial - INFO - main Alive!! 
+2025-07-16 23:13:55,379 - serial - INFO - 32-bit int at addresses 1-2: 3865461494
+2025-07-16 23:14:00,364 - serial - INFO - main Alive!! 
+2025-07-16 23:14:02,383 - serial - INFO - 32-bit int at addresses 1-2: 3865461494
+2025-07-16 23:14:06,379 - serial - INFO - main Alive!! 
+2025-07-16 23:14:09,391 - serial - INFO - 32-bit int at addresses 1-2: 3865461494
+2025-07-16 23:14:12,388 - serial - INFO - main Alive!! 
+2025-07-16 23:14:16,955 - serial - INFO - Han Cnu Kisan Start
+2025-07-16 23:14:16,957 - serial - INFO - Kisan out 
+2025-07-16 23:14:16,957 - serial - INFO - main Alive!! 
+2025-07-16 23:14:16,982 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:14:16,983 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:14:22,961 - serial - INFO - main Alive!! 
+2025-07-16 23:14:23,995 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:14:23,995 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:14:28,966 - serial - INFO - main Alive!! 
+2025-07-16 23:14:31,012 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:14:31,012 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:14:34,980 - serial - INFO - main Alive!! 
+2025-07-16 23:14:38,026 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:14:38,026 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:14:40,995 - serial - INFO - main Alive!! 
+2025-07-16 23:14:45,044 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:14:45,044 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:14:47,008 - serial - INFO - main Alive!! 
+2025-07-16 23:14:52,052 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:14:52,052 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:14:53,014 - serial - INFO - main Alive!! 
+2025-07-16 23:14:59,027 - serial - INFO - main Alive!! 
+2025-07-16 23:14:59,061 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:14:59,062 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:15:05,042 - serial - INFO - main Alive!! 
+2025-07-16 23:15:06,076 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:15:06,076 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:15:11,053 - serial - INFO - main Alive!! 
+2025-07-16 23:15:13,092 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:15:13,092 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:15:17,060 - serial - INFO - main Alive!! 
+2025-07-16 23:15:20,110 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:15:20,110 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:15:23,073 - serial - INFO - main Alive!! 
+2025-07-16 23:15:27,118 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:15:27,118 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:15:29,078 - serial - INFO - main Alive!! 
+2025-07-16 23:15:34,124 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:15:34,124 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:15:35,084 - serial - INFO - main Alive!! 
+2025-07-16 23:15:41,095 - serial - INFO - main Alive!! 
+2025-07-16 23:15:41,129 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:15:41,130 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:15:47,101 - serial - INFO - main Alive!! 
+2025-07-16 23:15:48,142 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:15:48,142 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:15:53,106 - serial - INFO - main Alive!! 
+2025-07-16 23:15:55,156 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:15:55,156 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:15:59,112 - serial - INFO - main Alive!! 
+2025-07-16 23:16:02,164 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:16:02,164 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:16:05,122 - serial - INFO - main Alive!! 
+2025-07-16 23:16:09,181 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:16:09,181 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:16:11,128 - serial - INFO - main Alive!! 
+2025-07-16 23:16:16,195 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:16:16,196 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:16:17,140 - serial - INFO - main Alive!! 
+2025-07-16 23:16:23,151 - serial - INFO - main Alive!! 
+2025-07-16 23:16:23,216 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:16:23,216 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:16:29,151 - serial - INFO - main Alive!! 
+2025-07-16 23:16:30,227 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:16:30,228 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:16:35,152 - serial - INFO - main Alive!! 
+2025-07-16 23:16:37,245 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:16:37,245 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:16:41,153 - serial - INFO - main Alive!! 
+2025-07-16 23:16:44,265 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:16:44,265 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:16:47,164 - serial - INFO - main Alive!! 
+2025-07-16 23:16:51,277 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:16:51,277 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:16:53,173 - serial - INFO - main Alive!! 
+2025-07-16 23:16:58,296 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:16:58,296 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:16:59,182 - serial - INFO - main Alive!! 
+2025-07-16 23:17:05,195 - serial - INFO - main Alive!! 
+2025-07-16 23:17:05,303 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:17:05,303 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:17:11,209 - serial - INFO - main Alive!! 
+2025-07-16 23:17:12,310 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:17:12,310 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:17:17,220 - serial - INFO - main Alive!! 
+2025-07-16 23:17:19,316 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:17:19,316 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:17:23,227 - serial - INFO - main Alive!! 
+2025-07-16 23:17:26,326 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:17:26,326 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:17:29,241 - serial - INFO - main Alive!! 
+2025-07-16 23:17:33,335 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:17:33,336 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:17:35,246 - serial - INFO - main Alive!! 
+2025-07-16 23:17:40,345 - serial - INFO - Raw registers: [17142, 58982]
+2025-07-16 23:17:40,346 - serial - INFO - Read float value 123.45 from address 1
+2025-07-16 23:17:41,253 - serial - INFO - main Alive!! 

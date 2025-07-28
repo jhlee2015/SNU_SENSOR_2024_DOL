@@ -9,6 +9,11 @@ import up_util
 import up_logger_manager
 import up_databases
 
+"""
+센서 : SOHA 테크 Co2, 온/습도 센서
+인터페이스 : TTL 
+저장방식: DB 직접 저장
+"""
 
 class SOHA:
 

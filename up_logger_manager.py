@@ -4,11 +4,12 @@ import logging.handlers
 import os
 import up_util
 
+"""
+로그 저장을 위한 로그 메니져
+"""
+
 FORMATTER = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-
 CSV_FORMATTER = logging.Formatter('%(message)s')
-
-
 def singleton(cls):
     instances = {}
 

@@ -9,6 +9,11 @@ import up_logger_manager
 import up_databases
 import up_config_manager
 
+"""
+센서 : 기상센서(풍향, 풍속, 온도, 습도, 일사량등)
+인터페이스 : TTL
+저장 : DB 직접 저장
+"""
 #DATA = "RM;202406201645;59500153;0;91;4;0.0;25.5;46.5;196;0;0;1;0;6.207;0D61"
 
 class WD3000_DOMAIN:
@@ -22,7 +27,6 @@ class WD3000_DOMAIN:
         self.maxwind = maxwind
         self.curwind = curwind
         self.solar_radiation = solar_radiation
-
 
 class WD3000:
 

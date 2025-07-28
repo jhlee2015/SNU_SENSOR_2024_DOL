@@ -3,6 +3,9 @@ import configparser
 import up_util
 import os
 
+"""
+config.ini 파일에서 설정된 설정 정보 가져오기
+"""
 
 def singleton(cls):
     instances = {}

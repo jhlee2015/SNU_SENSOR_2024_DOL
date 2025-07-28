@@ -2,6 +2,11 @@
 import up_logger_manager
 import os
 
+"""
+crc 체크섬
+hex 표출등 
+"""
+
 # sensor type
 TEMP = 1
 HUM = 2

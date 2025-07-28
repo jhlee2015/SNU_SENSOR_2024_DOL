@@ -9,6 +9,10 @@ import up_logger_manager
 import up_config_manager
 from up_util import UTIL
 
+"""
+DB 접속
+DB 쿼리
+"""
 
 # mysql에 접속하고 disconnect되었을 때 재접하는 클레스
 # 저장할 때 csv 형태로 같이 저장하게 한다.
