@@ -9,6 +9,7 @@ import up_util
 import up_logger_manager
 import up_kongju_farm_databases as upDatabases
 from pymodbus.client.serial import ModbusSerialClient as ModbusClient
+import RPi.GPIO as GPIO
 
 # 로그 설정
 # logging.basicConfig()
@@ -21,11 +22,13 @@ from pymodbus.client.serial import ModbusSerialClient as ModbusClient
 저장방식: DB 직접 저장
 """
 
+
+
 class LITNIX:
 
     def __init__(self):
-        # serial_config = up_config_manager.ConfigManager().get_serial_config('AMA2')
-        serial_config = up_config_manager.ConfigManager().get_serial_config('WINDOW')
+        serial_config = up_config_manager.ConfigManager().get_serial_config('AMA2')
+        # serial_config = up_config_manager.ConfigManager().get_serial_config('WINDOW')
         # tcp_modbus_config = up_config_manager.ConfigManager().get_modbus_server()
         sensor_id = up_config_manager.ConfigManager().get_sensor_id()
         print(serial_config)
@@ -47,11 +50,31 @@ class LITNIX:
             timeout=1
         )
 
+        # 핀 넘버링 모드 설정
+        GPIO.setmode(GPIO.BCM)
+
+        # 사용할 GPIO 핀 번호
+        self.PIN1 = 17  # 물리적 핀 11
+        self.PIN2 = 27  # 물리적 핀 13
+
+        # 출력 핀으로 설정
+        GPIO.setup(self.PIN1, GPIO.OUT)
+        GPIO.setup(self.PIN2, GPIO.OUT)
+        GPIO.output(self.PIN1, GPIO.HIGH)  # OFF
+        GPIO.output(self.PIN2, GPIO.HIGH)  # OFF
+
     def readthread(self):  # 데이터 받는 함수
 
         if self.client.connect():
             try:
                 while True:
+                    GPIO.output(self.PIN1, GPIO.LOW)
+                    GPIO.output(self.PIN2, GPIO.HIGH)
+                    time.sleep(1)
+                    GPIO.output(self.PIN1, GPIO.HIGH)
+                    GPIO.output(self.PIN2, GPIO.HIGH)
+                    time.sleep(10)
+
                     serial_logger.info("Sensor Pack Request!")
                     result = self.client.read_holding_registers(address=self.address, count=self.count,
                                                                    slave=self.slave_id)
@@ -80,8 +103,23 @@ class LITNIX:
 
                         # update 하기전에 컬럼이 존재 하는지 확인하기
                         #SV = upDatabases.SENSOR_VALUE(self.sensor_id, now_date, up_util.TEMP, temperature, log_date)
-                        SV = upDatabases.SENSOR_VALUE(self.sensor_id, now_date, up_util.TEMP, temperature, log_date)
-                        db_manager.updateSensor(SV)
+                        SV = upDatabases.SENSOR_VALUE("SP-13", now_date, temperature, log_date)
+                        db_manager.insertSensor(SV)
+
+                        SV = upDatabases.SENSOR_VALUE("SP-14", now_date, humidity, log_date)
+                        db_manager.insertSensor(SV)
+
+                        SV = upDatabases.SENSOR_VALUE("SP-15", now_date, co2, log_date)
+                        db_manager.insertSensor(SV)
+
+                        SV = upDatabases.SENSOR_VALUE("SP-16", now_date, ammonia, log_date)
+                        db_manager.insertSensor(SV)
+
+                    GPIO.output(self.PIN1, GPIO.HIGH)
+                    GPIO.output(self.PIN2, GPIO.LOW)
+                    time.sleep(1)
+                    GPIO.output(self.PIN1, GPIO.HIGH)
+                    GPIO.output(self.PIN2, GPIO.HIGH)
 
                     # client.close()
                     time.sleep(5)
@@ -89,7 +127,7 @@ class LITNIX:
                 serial_logger.info("중단됨 (Ctrl+C)")
             finally:
                 self.client.close()
-                serial_logger.info("Modbus 연결 종료됨.")
+                serial_logger.info("Rs485 Modbus 연결 종료됨.")
         else:
             self.client.close()
             serial_logger.info("Modbus connected fail")
