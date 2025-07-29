@@ -11,9 +11,9 @@ import up_kongju_farm_databases as upDatabases
 from pymodbus.client.serial import ModbusSerialClient as ModbusClient
 
 # 로그 설정
-logging.basicConfig()
-log = logging.getLogger()
-log.setLevel(logging.DEBUG)  # DEBUG 수준으로 설정하면 패킷 내용이 나옵니다
+# logging.basicConfig()
+# log = logging.getLogger()
+# log.setLevel(logging.DEBUG)  # DEBUG 수준으로 설정하면 패킷 내용이 나옵니다
 
 """
 센서 :litnix 암모니아, Co2, 온/습도 센서
@@ -25,7 +25,7 @@ class LITNIX:
 
     def __init__(self):
         # serial_config = up_config_manager.ConfigManager().get_serial_config('AMA2')
-        serial_config = up_config_manager.ConfigManager().get_serial_config('AMA2')
+        serial_config = up_config_manager.ConfigManager().get_serial_config('WINDOW')
         # tcp_modbus_config = up_config_manager.ConfigManager().get_modbus_server()
         sensor_id = up_config_manager.ConfigManager().get_sensor_id()
         print(serial_config)
@@ -52,8 +52,8 @@ class LITNIX:
         if self.client.connect():
             try:
                 while True:
-                    serial_logger.info("Kisan Sensor Request!")
-                    result = self.client.read_input_registers(address=self.address, count=self.count,
+                    serial_logger.info("Sensor Pack Request!")
+                    result = self.client.read_holding_registers(address=self.address, count=self.count,
                                                                    slave=self.slave_id)
 
                     if result.isError():
@@ -94,10 +94,6 @@ class LITNIX:
             self.client.close()
             serial_logger.info("Modbus connected fail")
 
-    def app_init(self):
-        self.ser = serial.Serial(self.port, self.baud, timeout=1)
-
-
 if __name__ == '__main__':
 
     log_manager = up_logger_manager.LoggerManager()
@@ -108,16 +104,27 @@ if __name__ == '__main__':
     serial_logger = log_manager.get_logger('serial')
 
     while True:
+        serial_logger.info('Han Cnu Kisan flow Start')
         try:
-            SENSOR = LITNIX()
-            SENSOR.app_init()
-            thread = threading.Thread(target=LITNIX.readthread, args=(SENSOR.ser,))  # 시리얼 통신 받는 부분
-            thread.start()
-            #SENSOR.main_loof()
+            litnix = LITNIX()
+            litnix.read_thread = threading.Thread(target=litnix.readthread)
+            litnix.read_thread.daemon = True
+            litnix.read_thread.start()
+            while True:
+                serial_logger.info("main Alive!! ")
+                if litnix.read_thread is None or not litnix.read_thread.is_alive():
+                    serial_logger.warning("thread dead! restarting...")
+                    litnix = LITNIX()
+                    litnix.read_thread.read_thread = threading.Thread(target=LITNIX.readthread, args=(litnix.client,))
+                    litnix.read_thread.read_thread.daemon = True
+                    litnix.read_thread.read_thread.start()
+                    serial_logger.info("thread restarted.")
+                time.sleep(60)
 
         except Exception as E:
-            serial_logger.info('main error ' + str(E))
-            if SENSOR.ser is not None:
+            serial_logger.info('main error' + str(E))
+            if litnix.client is not None:
                 serial_logger.info('serial close ok')
-                SENSOR.ser.close()
+                litnix.client.close()
             time.sleep(10)
+
