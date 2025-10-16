@@ -1719,3 +1719,12 @@ log/sensing_value_old.csv
 log/serial.log.2024-07-18
 config.ini
 
+log/serial.log.2024-11-29
+log/db.log.2024-11-29
+log/serial.log.2024-12-02
+log/db.log.2024-12-02
+log/csv.log.2024-12-02
+log/csv.log.2024-11-29
+config.ini
+__pycache__/up_databases.cpython-37.pyc
+__pycache__/up_databases.cpython-311.pyc

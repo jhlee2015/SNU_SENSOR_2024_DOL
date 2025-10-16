@@ -2,6 +2,11 @@
 import up_logger_manager
 import os
 
+"""
+crc 체크섬
+hex 표출등 
+"""
+
 # sensor type
 TEMP = 1
 HUM = 2
@@ -16,8 +21,11 @@ MAX_WIND = 9  # weather
 CUR_WIND = 10  # weather
 SOLAR_RADIATION = 11  # weather
 RAIN_DURING_INTERVAL = 12  # weather
-
 WIND_SPEED_DIRECTION = 13  # weather
+
+INV = 14 # 인버터
+PUMP = 15 # 펌프
+PH = 16 # ph
 
 crcTable = [0x0000, 0xC0C1, 0xC181, 0x0140, 0xC301, 0x03C0, 0x0280, 0xC241, 0xC601, 0x06C0, 0x0780, 0xC741, 0x0500,
             0xC5C1, 0xC481, 0x0440, 0xCC01, 0x0CC0, 0x0D80, 0xCD41, 0x0F00, 0xCFC1, 0xCE81, 0x0E40, 0x0A00, 0xCAC1,
@@ -106,3 +114,19 @@ class UTIL:
             else:
                 str = str + ''.join(hexlist[i])
                 return str
+    
+    #2의 보수로 변환
+    @staticmethod
+    def twos_complement(value, bit_width):
+        if value >= 2**(bit_width - 1):
+            value -= 2**bit_width
+        return value
+    
+# main 테스트 코드
+if __name__ == '__main__':
+    util = UTIL()
+    test_value_array = bytes([0x12, 0x34])
+    test_value = int(test_value_array.hex(), 16)
+
+    test_value = 50027.4
+    print(util.twos_complement(test_value, 16) / 10)

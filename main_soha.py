@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 import threading
 import time
-import serial
+#import serial
 from datetime import datetime
-
+import serial
 import up_config_manager
 import up_util
 import up_logger_manager
 import up_databases
 
+"""
+센서 : SOHA 테크 Co2, 온/습도 센서
+인터페이스 : TTL 
+저장방식: DB 직접 저장
+"""
 
 class SOHA:
 
@@ -37,24 +42,35 @@ class SOHA:
             time.sleep(60)
 
     @staticmethod
-    def soha_parser(data, sensor_id):
+    def soha_parser(data, device_id):
         co2_value = data[3:5]
         temp_value = data[5:7]
         rh_value = data[7:9]
+
+        now_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        log_date =datetime.now().strftime("%Y%m")
 
         #print("Co2 value :", int(co2_value.hex(), 16))
         true_co2_value = int(co2_value.hex(), 16)
 
         # id, type, value
-        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), sensor_id, up_util.CO2, true_co2_value))
+        # update 하기전에 컬럼이 존재 하는지 확인하기
+        SV = up_databases.SENSOR_VALUE(device_id, now_date, up_util.CO2, true_co2_value, log_date)
+        # db에 device_id가 있는지 확인 update하기
+        # 월별 DB테이블 생성하여 저장
+        db_manager.updateSensor(SV)
 
         #print("temp value :", int(temp_value.hex(), 16))
-        true_temp_value = int(temp_value.hex(), 16) / 10
-        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), sensor_id, up_util.TEMP, true_temp_value))
+        # temp_value 2byte int 값을 음수값으로 표현하기 위해 2의 보수로 변환
+        true_temp_value = util.twos_complement(int(temp_value.hex(), 16), 16) / 10
+        SV = up_databases.SENSOR_VALUE(device_id, now_date, up_util.TEMP, true_temp_value, log_date)
+        db_manager.updateSensor(SV)
+
 
         #print('RH value : ', int(rh_value.hex(), 16))
         true_rh_value = int(rh_value.hex(), 16) / 10
-        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), sensor_id, up_util.HUM, true_rh_value))
+        SV = up_databases.SENSOR_VALUE(device_id, now_date, up_util.HUM, true_rh_value, log_date)
+        db_manager.updateSensor(SV)
 
         serial_logger.info('real_co2 value : '+str(true_co2_value)+' ppm')
         serial_logger.info('real_temp_value : '+str(true_temp_value)+'C')
@@ -65,7 +81,7 @@ class SOHA:
         while True:
             if self.ser.readable():
                 # print('start')
-                res = self.ser.readline()
+                res = self.ser.read(11)
                 if res:
                     if util.crc16(res) == [0, 0]:
                         ret = util.hextodec(res, "input : ")  # byte형식
@@ -95,7 +111,7 @@ if __name__ == '__main__':
             soha.main_loof()
 
         except Exception as E:
-            serial_logger.info('main error' + str(E))
+            serial_logger.info('main error ' + str(E))
             if soha.ser is not None:
                 serial_logger.info('serial close ok')
                 soha.ser.close()

@@ -9,6 +9,11 @@ import up_logger_manager
 import up_databases
 import up_config_manager
 
+"""
+센서 : 아이온텍 환풍기
+인터페이스 : TTL 
+저장방식: DB 직접 저장
+"""
 
 class PMC:
 
@@ -43,11 +48,14 @@ class PMC:
             serial_logger.info(ret)
 
             #pmc
-            temp = PMC.TEMP(DATA[3:5]) #온도
+            temp_data = DATA[3:5]
+            temp_value = int(temp_data.hex(), 16)
+            temp = PMC.TEMP(util.twos_complement(temp_value, 16)) #온도
             vent1 = PMC.VENT(DATA[5:7]) #VENT1(%)
             vent2 = PMC.VENT(DATA[7:9]) #VENT2(%)
             vent3 = PMC.VENT(DATA[9:11]) #VENT3(%)
             pmc_error = PMC.ERROR(DATA[11:13])  # error
+
             serial_logger.info("temp val : " + temp)
             serial_logger.info("vent1 val : " + vent1+",vent1 val : " + vent2+",vent1 val : " + vent3)
             serial_logger.info("error val : " + pmc_error)
@@ -57,8 +65,8 @@ class PMC:
 
     @staticmethod
     def TEMP(data):
-        n = int(data.hex(), 16)
-        n2 = float(n / 10)
+        #n = up_util.twos_complement(int(data.hex(), 16), 16) / 10
+        n2 = float(data / 10)
         temp = "{0:.2f}".format(n2)
         return temp
 
@@ -82,17 +90,18 @@ class PMC:
                     if util.crc16(res) == [0, 0]:
                         util.hextodec(res, "response data : ")  # byte형식
 
-
                         # print(res[0:3], type(res[0:3]))
+                        now_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        log_date =datetime.now().strftime("%Y%m")
                         temp, vent1, vent2, vent3, error = self.pmc_parser(res)
-                        db_manager.insert(query=db_manager.insertQuery,
-                                          params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.TEMP, temp))
-                        db_manager.insert(query=db_manager.insertQuery,
-                                          params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.VENT1, vent1))
-                        db_manager.insert(query=db_manager.insertQuery,
-                                          params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.VENT2, vent2))
-                        db_manager.insert(query=db_manager.insertQuery,
-                                          params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.VENT3, vent3))
+                        SV = up_databases.SENSOR_VALUE(self.sensor_id, now_date, up_util.TEMP, temp, log_date)
+                        db_manager.updateSensor(SV)
+                        SV = up_databases.SENSOR_VALUE(self.sensor_id, now_date, up_util.VENT1, vent1, log_date)
+                        db_manager.updateSensor(SV)
+                        SV = up_databases.SENSOR_VALUE(self.sensor_id, now_date, up_util.VENT2, vent2, log_date)
+                        db_manager.updateSensor(SV)
+                        SV = up_databases.SENSOR_VALUE(self.sensor_id, now_date, up_util.VENT3, vent3, log_date)
+                        db_manager.updateSensor(SV)
 
                     else:
                         serial_logger.info(datetime.now(), "CRC UNMATCHED DATA : ", res)

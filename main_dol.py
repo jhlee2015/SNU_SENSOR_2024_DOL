@@ -9,6 +9,11 @@ import up_logger_manager
 import up_databases
 import up_config_manager
 
+"""
+센서 : DOL 암모니아
+인터페이스 : TTL 
+저장방식: DB 직접 저장
+"""
 
 class DOL:
 
@@ -66,7 +71,10 @@ class DOL:
 
                         # print(res[0:3], type(res[0:3]))
                         nh3 = self.kisan_parser(res)
-                        db_manager.insert(query=db_manager.insertQuery, params=(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.sensor_id, up_util.NH3, nh3))
+                        now_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        log_date =datetime.now().strftime("%Y%m")
+                        SV = up_databases.SENSOR_VALUE(self.sensor_id, now_date, up_util.NH3, nh3, log_date)
+                        db_manager.updateSensor(SV)
                     else:
                         serial_logger.info(datetime.now(), "CRC UNMATCHED DATA : ", res)
 

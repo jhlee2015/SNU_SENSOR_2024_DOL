@@ -1,0 +1,5 @@
+2025-07-17 16:41:49,506 - serial - INFO - Han Cnu Kisan flow Start
+2025-07-17 16:41:49,510 - serial - INFO - main error'SUPMEA' object has no attribute 'modbus_host'
+2025-07-17 16:42:46,989 - serial - INFO - Han Cnu Kisan flow Start
+2025-07-17 16:42:46,992 - serial - INFO - Kisan Sensor flow Request!
+2025-07-17 16:42:46,992 - serial - INFO - main Alive!! 

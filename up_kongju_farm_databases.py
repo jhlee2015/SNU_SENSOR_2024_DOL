@@ -19,7 +19,7 @@ DB 쿼리
 class DatabaseManager:
     updateSensorQuery = 'update tb_sensor_value set timestamp=%s, sensing_value=%s  WHERE (device_id = %s and sensor_type = %s)'
     selectSensorQuery = 'select * from tb_sensor_value where device_id = %s and sensor_type = %s'
-    insertSensorQuery = 'insert into tb_sensor_value(device_id, timestamp, sensor_type, sensing_value) values(%s, %s, %s, %s)'
+    insertSensorQuery = 'insert into sensor_info_val(create_dt, sensor_id, sensor_value) values(%s, %s, %s)'
 
     insertKnuCowQuery = 'insert into tb_sensing_value(create_dt, sensor_id, sensor_type, wind_speed_value, wind_direction_value) values(%s, %s, %s, %s, %s)'
 
@@ -136,18 +136,10 @@ class DatabaseManager:
             # self.connect()
             # raise e
 
-    def updateSensor(self, SV):
+    def insertSensor(self, SV):
         try:
-            if self.select(query=self.selectSensorQuery, params=(SV.device_id, SV.sensor_type)):
-                self.update(query=self.updateSensorQuery, params=(SV.timestamp, SV.sensing_value, SV.device_id, SV.sensor_type))
-                self.logger.info(f"update ok")
-            else:
-                self.insert(query=self.insertSensorQuery, params=(SV.device_id, SV.timestamp, SV.sensor_type, SV.sensing_value))
-                self.logger.info(f"insert ok")
-            # 로그 저장
-            make_log_query = self.get_insert_sensor_log_query('tb_sensing_value_'+SV.log_date)
-            # print(make_log_query)
-            self.insert(query=make_log_query, params=(SV.device_id, SV.timestamp, SV.sensor_type, SV.sensing_value))
+            self.insert(query=self.insertSensorQuery, params=(SV.timestamp, SV.device_id, SV.sensing_value))
+            self.logger.info(f"insert ok")
         except pymysql.MySQLError as e:
             self.logger.info(f"Error executing update: {e}")
             # self.connect()
@@ -179,15 +171,14 @@ class DatabaseManager:
 
 # device_id, timestamp, sensor_type, sensing_value을 포함한 객체 클레스
 class SENSOR_VALUE:
-    def __init__(self, device_id, timestamp, sensor_type, sensing_value, log_date):
+    def __init__(self, device_id, timestamp, sensing_value, log_date):
         self.device_id = device_id
         self.timestamp = timestamp
-        self.sensor_type = sensor_type
         self.sensing_value = sensing_value
         self.log_date = log_date
 
     def __str__(self):
-        return f"device_id: {self.device_id}, timestamp: {self.timestamp}, sensor_type: {self.sensor_type}, sensing_value: {self.sensing_value}, log_date: {self.log_date}"
+        return f"device_id: {self.device_id}, timestamp: {self.timestamp}, sensing_value: {self.sensing_value}, log_date: {self.log_date}"
 
 if __name__ == '__main__':
     log_manager = up_logger_manager.LoggerManager()

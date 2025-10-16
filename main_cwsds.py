@@ -10,6 +10,11 @@ import up_logger_manager
 import up_databases
 
 # Carbonized Wind Speed Direction Sensor
+"""
+센서 : 풍향풍속계
+인터페이스 : TTL 
+저장방식: DB 직접 저장
+"""
 
 class CWSDS:
 
